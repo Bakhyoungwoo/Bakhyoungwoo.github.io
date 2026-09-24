@@ -112,6 +112,7 @@ html.dark .icon-moon { display: none; }
 .hero-lead { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.5; margin-top: 28px; max-width: 620px; }
 .hero-lead em { font-style: normal; color: var(--accent); }
 .hero-desc { font-size: 1rem; color: var(--gray-dark); max-width: 560px; line-height: 1.85; margin-top: 14px; }
+.hero-desc + .hero-desc { margin-top: 10px; }
 .hero-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
 .hero-links a {
   display: inline-flex; align-items: center; gap: 7px;
