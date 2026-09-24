@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://bakhyoungwoo.github.io/">
   <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/projects/marketpoke-arch.webp">
   <script>
+    document.documentElement.classList.add('js');
     try {
       var t = localStorage.getItem('theme');
       if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
@@ -55,20 +56,20 @@
     <h3 class="subhead">주제</h3>
     <p class="body-text">Elasticsearch 기반 검색과 CDC 파이프라인으로 검색엔진을 구축하고, RAG를 이용해 사용자 맞춤 여행 코스를 추천합니다. 빠르고 신뢰할 수 있는 추천을 목표로 검색 성능, 데이터 동기화, 근거 검증을 함께 설계했습니다.</p>
     <h3 class="subhead">주요 기능</h3>
-    <div class="feats reveal"><div class="feat-col"><h4>시스템 기능</h4><ul><li>회원가입 / 로그인 / 로그아웃 (JWT 인증 기반)</li><li>AI 여행 코스 추천 / 생성</li><li>관광지·맛집·숙소 데이터 조회 및 리뷰</li><li>커뮤니티 게시글·댓글·좋아요·스크랩</li><li>Kafka CDC 기반 실시간 검색 색인</li></ul></div></div>
+    <div class="feats"><div class="feat-col"><h4>시스템 기능</h4><ul><li>회원가입 / 로그인 / 로그아웃 (JWT 인증 기반)</li><li>AI 여행 코스 추천 / 생성</li><li>관광지·맛집·숙소 데이터 조회 및 리뷰</li><li>커뮤니티 게시글·댓글·좋아요·스크랩</li><li>Kafka CDC 기반 실시간 검색 색인</li></ul></div></div>
     <h3 class="subhead">전체 아키텍처</h3>
     <p class="body-text">Terraform으로 VPC·ALB·ECS Fargate·RDS·S3를 코드화하고, GitHub Actions와 AWS OIDC로 ECR 이미지 빌드와 ECS 자동 배포를 구성했습니다. Spring Boot와 FastAPI를 동일 ECS Task에 배치해 내부 통신으로 연동하고, AI 서버는 외부에 노출하지 않았습니다.</p>
-    <figure class="figure reveal">
-      <a href="assets/projects/gangwon-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-arch.webp" alt="강원동행 AWS 아키텍처 - Terraform · GitHub Actions OIDC · ECS Fargate · RDS" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/gangwon-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-arch.webp" alt="강원동행 AWS 아키텍처 - Terraform · GitHub Actions OIDC · ECS Fargate · RDS"></a>
       <figcaption class="figure-caption">강원동행 AWS 아키텍처 - Terraform · GitHub Actions OIDC · ECS Fargate · RDS</figcaption>
     </figure>
     <h3 class="subhead">서비스 화면</h3>
-    <figure class="figure reveal">
-      <a href="assets/projects/gangwon-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-screen.webp" alt="AI 여행 코스 추천 화면" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/gangwon-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-screen.webp" alt="AI 여행 코스 추천 화면"></a>
       <figcaption class="figure-caption">AI 여행 코스 추천 화면</figcaption>
     </figure>
     <h3 class="subhead">사용 기술</h3>
-    <div class="tech-grid reveal"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag mine">Spring Boot</span><span class="tech-tag">FastAPI</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag mine">Elasticsearch</span><span class="tech-tag mine">Kafka</span><span class="tech-tag mine">Debezium</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag mine">LangGraph</span><span class="tech-tag mine">RAG</span></div></div><div class="tech-group"><h4>Infra</h4><div class="tech-tags"><span class="tech-tag mine">Terraform</span><span class="tech-tag mine">AWS ECS Fargate</span><span class="tech-tag mine">ALB</span><span class="tech-tag mine">RDS</span><span class="tech-tag mine">GitHub Actions</span><span class="tech-tag mine">Docker</span></div></div><div class="tech-group"><h4>Observability</h4><div class="tech-tags"><span class="tech-tag mine">Prometheus</span><span class="tech-tag mine">Grafana</span><span class="tech-tag mine">k6</span></div></div></div>
+    <div class="tech-grid"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag mine">Spring Boot</span><span class="tech-tag">FastAPI</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag mine">Elasticsearch</span><span class="tech-tag mine">Kafka</span><span class="tech-tag mine">Debezium</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag mine">LangGraph</span><span class="tech-tag mine">RAG</span></div></div><div class="tech-group"><h4>Infra</h4><div class="tech-tags"><span class="tech-tag mine">Terraform</span><span class="tech-tag mine">AWS ECS Fargate</span><span class="tech-tag mine">ALB</span><span class="tech-tag mine">RDS</span><span class="tech-tag mine">GitHub Actions</span><span class="tech-tag mine">Docker</span></div></div><div class="tech-group"><h4>Observability</h4><div class="tech-tags"><span class="tech-tag mine">Prometheus</span><span class="tech-tag mine">Grafana</span><span class="tech-tag mine">k6</span></div></div></div>
     <p class="tech-note"><span class="tech-tag mine">강조</span> 직접 구현·구축한 기술</p>
   </div>
 </section>
@@ -79,22 +80,22 @@
     <h2 class="d-section-title">핵심 기여</h2>
     <h3 class="subhead">Elasticsearch 기반 여행지 통합 검색</h3>
     <p class="body-text">초기 PostgreSQL 기반 검색 구조에서 반복적인 복합 조건 조회로 병목이 발생했습니다. 검색 기능을 Elasticsearch로 분리하고 관광지·음식점·숙소 데이터를 통합 색인한 뒤, 전문 검색과 필터링을 활용한 복합 조건 검색 API를 구현했습니다.</p>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">81.7%↓</div><div class="stat-label">검색 API p95<br>99.3ms → 18.2ms</div></div><div class="stat-box"><div class="stat-num">82.1%↓</div><div class="stat-label">검색 API p99<br>148.5ms → 26.6ms</div></div><div class="stat-box"><div class="stat-num">19.8%↑</div><div class="stat-label">처리량<br>116.9 → 140.0 req/s</div></div><div class="stat-box"><div class="stat-num">0%</div><div class="stat-label">오류율<br>(k6 5분, VU 20)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">81.7%↓</div><div class="stat-label">검색 API p95<br>99.3ms → 18.2ms</div></div><div class="stat-box"><div class="stat-num">82.1%↓</div><div class="stat-label">검색 API p99<br>148.5ms → 26.6ms</div></div><div class="stat-box"><div class="stat-num">19.8%↑</div><div class="stat-label">처리량<br>116.9 → 140.0 req/s</div></div><div class="stat-box"><div class="stat-num">0%</div><div class="stat-label">오류율<br>(k6 5분, VU 20)</div></div></div>
     <h3 class="subhead">Kafka·Debezium 기반 CDC 파이프라인</h3>
     <p class="body-text">Debezium이 PostgreSQL 변경 사항을 Kafka 이벤트로 전달하면 Consumer가 Elasticsearch 인덱스에 자동 반영하도록 구성해 애플리케이션의 이중 쓰기를 제거했습니다. 지수 backoff 재시도와 DLT 기반 재색인으로 ES 장애 복구 후에도 최신 데이터가 자동 반영됩니다.</p>
-    <figure class="figure reveal">
-      <a href="assets/projects/gangwon-cdc.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-cdc.webp" alt="PostgreSQL WAL → Debezium → Kafka Topic → Spring Consumer → Elasticsearch" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/gangwon-cdc.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-cdc.webp" alt="PostgreSQL WAL → Debezium → Kafka Topic → Spring Consumer → Elasticsearch"></a>
       <figcaption class="figure-caption">PostgreSQL WAL → Debezium → Kafka Topic → Spring Consumer → Elasticsearch</figcaption>
     </figure>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">34.8초</div><div class="stat-label">ES 120초 장애 후<br>자동 재반영까지</div></div><div class="stat-box"><div class="stat-num">1,054ms</div><div class="stat-label">DB 변경 → 검색 반영<br>p95 (30회 반복)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">34.8초</div><div class="stat-label">ES 120초 장애 후<br>자동 재반영까지</div></div><div class="stat-box"><div class="stat-num">1,054ms</div><div class="stat-label">DB 변경 → 검색 반영<br>p95 (30회 반복)</div></div></div>
     <h3 class="subhead">LangGraph 기반 여행 코스 생성·근거 검증</h3>
     <p class="body-text">요청 분석부터 검증까지 이어지는 파이프라인을 Spring Boot - FastAPI로 연동하고, 관광지·음식점·숙소 Agent가 공통 검색 API를 사용하도록 통합했습니다.</p>
-    <div class="flow-steps reveal"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>요청 분석</strong> - 사용자의 지역·기간·동행·선호 조건 파악</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>장소 검색</strong> - 관광지·음식점·숙소 Agent가 공통 Elasticsearch 검색 API 사용</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>일정 생성</strong> - 검색 결과를 바탕으로 일자별 코스 구성</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>검증</strong> - 일정 중복·시간 충돌·누락을 검증하고 기준 미달 시 재생성</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>근거 차단</strong> - 검색 결과 조건에 근거하지 않은 주장은 차단하고, 근거 부족 시 fallback 응답 반환</div></div></div>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">83.3% → 0%</div><div class="stat-label">Claim Violation Rate<br>(환각 유도 평가 60케이스)</div></div></div>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>요청 분석</strong> - 사용자의 지역·기간·동행·선호 조건 파악</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>장소 검색</strong> - 관광지·음식점·숙소 Agent가 공통 Elasticsearch 검색 API 사용</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>일정 생성</strong> - 검색 결과를 바탕으로 일자별 코스 구성</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>검증</strong> - 일정 중복·시간 충돌·누락을 검증하고 기준 미달 시 재생성</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>근거 차단</strong> - 검색 결과 조건에 근거하지 않은 주장은 차단하고, 근거 부족 시 fallback 응답 반환</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">83.3% → 0%</div><div class="stat-label">Claim Violation Rate<br>(환각 유도 평가 60케이스)</div></div></div>
     <h3 class="subhead">Prometheus·Grafana 모니터링</h3>
     <p class="body-text">Prometheus로 애플리케이션과 Kafka 메트릭을 수집하고, Grafana에서 토픽별 처리량·Consumer Lag·API 응답시간을 실시간으로 관측할 수 있는 대시보드를 구축했습니다.</p>
-    <figure class="figure reveal">
-      <a href="assets/projects/gangwon-grafana.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-grafana.webp" alt="Grafana 대시보드 - HTTP 처리량 · p95 · Consumer Lag" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/gangwon-grafana.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-grafana.webp" alt="Grafana 대시보드 - HTTP 처리량 · p95 · Consumer Lag"></a>
       <figcaption class="figure-caption">Grafana 대시보드 - HTTP 처리량 · p95 · Consumer Lag</figcaption>
     </figure>
   </div>
@@ -110,10 +111,10 @@
     <div class="ts-block"><div class="ts-tag">문제</div><p class="body-text">AI 여행 코스 생성 과정에서 관광지·음식점·숙소 후보를 PostgreSQL에서 반복 조회하면서 복합 조건 검색 부하가 증가했습니다. 이로 인해 장소 검색 응답이 지연되고, AI 여행 코스 생성 시간까지 길어졌습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">진단</div><p class="body-text">지역·테마·반려동물 동반 여부·휠체어 접근성·편의시설·영업시간 등 다양한 조건이 조합되면서 문자열 검색과 다중 필터링이 RDB에 집중되었습니다. 또한 Elasticsearch 도입 이후 PostgreSQL의 변경 사항이 검색 인덱스에 자동 반영되지 않아 데이터 정합성 문제도 발생했습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">해결</div><div>
-    <div class="flow-steps reveal"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>검색 구조 개선</strong> - 검색 부하를 트랜잭션 DB에서 분리하기 위해 Elasticsearch 기반으로 전환하고, 복합 조건을 지원하는 통합 검색 API 구현</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>CDC 파이프라인 구축</strong> - PostgreSQL을 원본으로 유지하고 Debezium이 변경 사항을 Kafka로 전달, Spring Kafka Consumer가 인덱스를 생성·수정·삭제하고 일시적 실패는 Retry Topic으로 재처리</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>장애 복구 검증 및 개선</strong> - ES를 약 20초 중지하고 DB를 수정하자 복구 후에도 미반영. 재시도 시간(약 7초)이 장애 시간보다 짧아 이벤트가 DLT로 이동했고, DLT가 로그만 남긴 것이 원인. 재시도를 지수 backoff로 약 61초까지 늘리고, DLT 이벤트는 장소 ID만 기록해 스케줄러가 PostgreSQL 최신값으로 재색인하도록 변경해 순서 역전도 방지</div></div></div>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>검색 구조 개선</strong> - 검색 부하를 트랜잭션 DB에서 분리하기 위해 Elasticsearch 기반으로 전환하고, 복합 조건을 지원하는 통합 검색 API 구현</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>CDC 파이프라인 구축</strong> - PostgreSQL을 원본으로 유지하고 Debezium이 변경 사항을 Kafka로 전달, Spring Kafka Consumer가 인덱스를 생성·수정·삭제하고 일시적 실패는 Retry Topic으로 재처리</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>장애 복구 검증 및 개선</strong> - ES를 약 20초 중지하고 DB를 수정하자 복구 후에도 미반영. 재시도 시간(약 7초)이 장애 시간보다 짧아 이벤트가 DLT로 이동했고, DLT가 로그만 남긴 것이 원인. 재시도를 지수 backoff로 약 61초까지 늘리고, DLT 이벤트는 장소 ID만 기록해 스케줄러가 PostgreSQL 최신값으로 재색인하도록 변경해 순서 역전도 방지</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">81.7%↓</div><div class="stat-label">검색 p95 99.3ms → 18.2ms</div></div><div class="stat-box"><div class="stat-num">82.1%↓</div><div class="stat-label">검색 p99 148.5ms → 26.6ms</div></div><div class="stat-box"><div class="stat-num">30 / 30</div><div class="stat-label">DB 변경 → 검색 반영<br>전건 반영 (p95 1,054ms)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">81.7%↓</div><div class="stat-label">검색 p95 99.3ms → 18.2ms</div></div><div class="stat-box"><div class="stat-num">82.1%↓</div><div class="stat-label">검색 p99 148.5ms → 26.6ms</div></div><div class="stat-box"><div class="stat-num">30 / 30</div><div class="stat-label">DB 변경 → 검색 반영<br>전건 반영 (p95 1,054ms)</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">검색 성능 문제는 쿼리 최적화만으로 해결하기보다 트랜잭션 처리와 검색 기능을 분리하고, 각 목적에 맞는 저장소를 선택해야 한다는 점을 배웠습니다. 또한 성능뿐 아니라 데이터 동기화, 장애 발생 시 재처리, 운영 모니터링까지 함께 설계해야 함을 경험했습니다.</p></div>
     </article>

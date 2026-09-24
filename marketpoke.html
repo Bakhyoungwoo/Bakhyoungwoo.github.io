@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://bakhyoungwoo.github.io/">
   <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/projects/marketpoke-arch.webp">
   <script>
+    document.documentElement.classList.add('js');
     try {
       var t = localStorage.getItem('theme');
       if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
@@ -52,7 +53,8 @@
   <div class="page-section detail-section">
     <div class="section-label">Demo</div>
     <h2 class="d-section-title">시연 영상</h2>
-    <div class="video-wrap reveal"><iframe src="https://www.youtube-nocookie.com/embed/tdjR77kljeo" title="Market Poke 시연 영상" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="video-wrap"><iframe src="https://www.youtube.com/embed/tdjR77kljeo" title="Market Poke 시연 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <a class="video-link" href="https://www.youtube.com/watch?v=tdjR77kljeo" target="_blank" rel="noopener">▶ 영상이 재생되지 않으면 YouTube에서 보기</a>
   </div>
 </section>
 
@@ -63,20 +65,20 @@
     <h3 class="subhead">주제</h3>
     <p class="body-text">POS·상권·기상·유동인구·행사 데이터를 결합해 매장의 매출 변화 원인을 분석하고, AI가 대응 전략을 추천합니다. 추천된 전략은 담당자 승인을 거쳐 실행되며, 실행 이후 실제 매출과 고객 반응까지 검증하는 흐름으로 설계했습니다.</p>
     <h3 class="subhead">주요 기능</h3>
-    <div class="feats reveal"><div class="feat-col"><h4>사용자 기능</h4><ul><li>가계부 및 발주 관리</li><li>매장별 맞춤 전략 추천</li><li>O2O 매장 및 커머스</li><li>리뷰 분석</li></ul></div><div class="feat-col"><h4>관리자 기능</h4><ul><li>신규 가맹점 영업 타겟 추천</li><li>관리자 게시판</li></ul></div></div>
+    <div class="feats"><div class="feat-col"><h4>사용자 기능</h4><ul><li>가계부 및 발주 관리</li><li>매장별 맞춤 전략 추천</li><li>O2O 매장 및 커머스</li><li>리뷰 분석</li></ul></div><div class="feat-col"><h4>관리자 기능</h4><ul><li>신규 가맹점 영업 타겟 추천</li><li>관리자 게시판</li></ul></div></div>
     <h3 class="subhead">전체 아키텍처</h3>
     <p class="body-text">ECS Fargate 위에 Spring Boot API, FastAPI, Celery Worker, Celery Beat를 각각 올리고, RDS(MySQL)와 ElastiCache for Redis를 Private data subnet에 배치했습니다. 매출 CSV, AI 모델, RAG 인덱스와 분석 로그는 S3에 저장하고, 외부 API(공공데이터·카카오맵·OpenAI)는 NAT gateway를 통해 호출합니다.</p>
-    <figure class="figure reveal">
-      <a href="assets/projects/marketpoke-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-arch.webp" alt="Market Poke AWS 아키텍처 - ECS Fargate · RDS · ElastiCache · S3" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/marketpoke-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-arch.webp" alt="Market Poke AWS 아키텍처 - ECS Fargate · RDS · ElastiCache · S3"></a>
       <figcaption class="figure-caption">Market Poke AWS 아키텍처 - ECS Fargate · RDS · ElastiCache · S3</figcaption>
     </figure>
     <h3 class="subhead">서비스 화면</h3>
-    <figure class="figure reveal">
-      <a href="assets/projects/marketpoke-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-screen.webp" alt="서비스 화면 - 랜딩 · 로그인" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/marketpoke-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-screen.webp" alt="서비스 화면 - 랜딩 · 로그인"></a>
       <figcaption class="figure-caption">서비스 화면 - 랜딩 · 로그인</figcaption>
     </figure>
     <h3 class="subhead">사용 기술</h3>
-    <div class="tech-grid reveal"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag mine">Spring Boot</span><span class="tech-tag mine">FastAPI</span><span class="tech-tag mine">Celery</span><span class="tech-tag mine">Redis</span><span class="tech-tag mine">MySQL</span><span class="tech-tag mine">JWT</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag mine">LangGraph</span><span class="tech-tag mine">RAG</span><span class="tech-tag">BAAI/bge-m3</span><span class="tech-tag">Contextual Bandit</span></div></div><div class="tech-group"><h4>Infra</h4><div class="tech-tags"><span class="tech-tag mine">AWS ECS Fargate</span><span class="tech-tag mine">RDS</span><span class="tech-tag">ElastiCache</span><span class="tech-tag mine">S3</span><span class="tech-tag">CloudFront</span><span class="tech-tag mine">Docker</span></div></div></div>
+    <div class="tech-grid"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag mine">Spring Boot</span><span class="tech-tag mine">FastAPI</span><span class="tech-tag mine">Celery</span><span class="tech-tag mine">Redis</span><span class="tech-tag mine">MySQL</span><span class="tech-tag mine">JWT</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag mine">LangGraph</span><span class="tech-tag mine">RAG</span><span class="tech-tag">BAAI/bge-m3</span><span class="tech-tag">Contextual Bandit</span></div></div><div class="tech-group"><h4>Infra</h4><div class="tech-tags"><span class="tech-tag mine">AWS ECS Fargate</span><span class="tech-tag mine">RDS</span><span class="tech-tag">ElastiCache</span><span class="tech-tag mine">S3</span><span class="tech-tag">CloudFront</span><span class="tech-tag mine">Docker</span></div></div></div>
     <p class="tech-note"><span class="tech-tag mine">강조</span> 직접 구현·구축한 기술</p>
   </div>
 </section>
@@ -87,24 +89,24 @@
     <h2 class="d-section-title">핵심 기여</h2>
     <h3 class="subhead">Celery·Redis 기반 비동기 분석 처리</h3>
     <p class="body-text">장시간 걸리는 매출 분석 작업을 API 요청과 Celery Worker로 분리하고, 작업 상태를 <strong>QUEUED → RUNNING → DONE / FAILED</strong> 단계로 나누어 관리하는 Job API를 구현했습니다. 정체된 작업은 Celery Beat가 주기적으로 정리하도록 구성해 분석 작업과 일반 API 요청의 처리 환경을 격리했습니다.</p>
-    <figure class="figure reveal">
-      <a href="assets/projects/marketpoke-job.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-job.webp" alt="Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/marketpoke-job.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-job.webp" alt="Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리"></a>
       <figcaption class="figure-caption">Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리</figcaption>
     </figure>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">98.6%</div><div class="stat-label">분석 요청 접수 API<br>p50 응답 단축</div></div><div class="stat-box"><div class="stat-num">200.2s → 2.8s</div><div class="stat-label">동시 요청 50건<br>p50 응답 시간</div></div><div class="stat-box"><div class="stat-num">221.4s → 4.3s</div><div class="stat-label">동시 요청 50건<br>p95 응답 시간</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">98.6%</div><div class="stat-label">분석 요청 접수 API<br>p50 응답 단축</div></div><div class="stat-box"><div class="stat-num">200.2s → 2.8s</div><div class="stat-label">동시 요청 50건<br>p50 응답 시간</div></div><div class="stat-box"><div class="stat-num">221.4s → 4.3s</div><div class="stat-label">동시 요청 50건<br>p95 응답 시간</div></div></div>
     <h3 class="subhead">LangGraph 기반 대응 전략 추천·검증 파이프라인</h3>
     <p class="body-text">매출·리뷰 분석 결과를 기반으로 대응 전략을 생성하고, 전략 실행 이후 실제 매출과 고객 반응까지 검증하는 흐름을 상태 기반 워크플로우로 구현했습니다.</p>
-    <div class="flow-steps reveal"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>진단</strong> - 매출·리뷰 분석 결과로 매장 상태 진단</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>전략 추천</strong> - Contextual Bandit 기반 전략 선택 모델로 후보 전략 선정</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>RAG 근거 검색</strong> - BAAI/bge-m3로 벡터화한 공공·학술·플랫폼 자료에서 전략별 근거 검색</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>담당자 승인</strong> - 사람이 최종 승인한 전략만 실행 단계로 진행</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>리포트 생성</strong> - 검색 문서의 수치·출처만 활용해 생성하고, 생성 후 재검증해 환각 최소화</div></div><div class="flow-step"><div class="flow-num">06</div><div class="flow-text"><strong>효과 검증</strong> - SCM으로 실행 후 매출·방문객 변화를 검증</div></div></div>
-    <figure class="figure reveal">
-      <a href="assets/projects/marketpoke-langgraph.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-langgraph.webp" alt="LangGraph 전략 추천·승인·검증 워크플로우" loading="lazy"></a>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>진단</strong> - 매출·리뷰 분석 결과로 매장 상태 진단</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>전략 추천</strong> - Contextual Bandit 기반 전략 선택 모델로 후보 전략 선정</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>RAG 근거 검색</strong> - BAAI/bge-m3로 벡터화한 공공·학술·플랫폼 자료에서 전략별 근거 검색</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>담당자 승인</strong> - 사람이 최종 승인한 전략만 실행 단계로 진행</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>리포트 생성</strong> - 검색 문서의 수치·출처만 활용해 생성하고, 생성 후 재검증해 환각 최소화</div></div><div class="flow-step"><div class="flow-num">06</div><div class="flow-text"><strong>효과 검증</strong> - SCM으로 실행 후 매출·방문객 변화를 검증</div></div></div>
+    <figure class="figure">
+      <a href="assets/projects/marketpoke-langgraph.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-langgraph.webp" alt="LangGraph 전략 추천·승인·검증 워크플로우"></a>
       <figcaption class="figure-caption">LangGraph 전략 추천·승인·검증 워크플로우</figcaption>
     </figure>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">2.26배</div><div class="stat-label">합성환경에서 기준 정책 대비<br>평균 보상</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">2.26배</div><div class="stat-label">합성환경에서 기준 정책 대비<br>평균 보상</div></div></div>
     <h3 class="subhead">DB 설계 및 운영</h3>
     <p class="body-text">프로젝트 전체 기능을 도메인별로 설계하고, Spring Data JPA와 MySQL 8로 데이터 정합성을 관리했습니다. 주문·상품 간 관계와 판매 시점 가격 보존 구조를 적용했으며, Redis와 Docker Compose로 세션·작업 상태 및 DB 운영 환경을 구성했습니다.</p>
     <p class="body-text">Spring Boot 관리자 기능으로 JWT 기반 인증·인가, 공지사항 CRUD, S3 첨부파일 업로드·다운로드를 구현했습니다.</p>
-    <figure class="figure reveal">
-      <a href="assets/projects/marketpoke-erd.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-erd.webp" alt="ERD - 리뷰 분석 도메인 일부" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/marketpoke-erd.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-erd.webp" alt="ERD - 리뷰 분석 도메인 일부"></a>
       <figcaption class="figure-caption">ERD - 리뷰 분석 도메인 일부</figcaption>
     </figure>
   </div>
@@ -120,11 +122,11 @@
     <div class="ts-block"><div class="ts-tag">문제</div><p class="body-text">사용자가 매출 분석을 요청하면 FastAPI가 CSV 처리, 데이터 병합, 통계 분석, AI 추론을 모두 완료한 후 결과를 반환하는 동기 처리 구조였습니다. 분석 시간이 길어질수록 HTTP 요청이 오래 유지되었고, 요청이 몰리면 일반 API 요청까지 지연되었습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">진단</div><p class="body-text">장시간 수행되는 분석 작업이 HTTP 요청 내부에서 실행되고, 분석 작업과 일반 API 요청이 동일한 실행 환경을 공유하고 있었습니다. CPU 사용량이 높은 데이터 처리와 AI 추론이 요청 처리 자원을 점유해, 분석 시간에 비례해 API 응답 시간이 증가하는 구조였습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">해결</div><div>
-      <div class="flow reveal"><span class="old">기존 · Client → FastAPI → 매출 분석 → 결과 반환</span><br><span class="new">개선 · Client → FastAPI → Redis Queue → Celery Worker → 매출 분석</span></div>
-    <div class="flow-steps reveal"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>구조 개선</strong> - FastAPI는 분석 요청을 Redis Queue에 등록한 뒤 Job ID를 즉시 반환</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>Worker 분리</strong> - CSV 처리·데이터 병합·통계 계산·AI 추론은 Celery Worker가 담당하고, 요청 증가 시 API 서버와 별개로 Worker 수 조절</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>상태·실패 관리</strong> - Job API로 진행 상태와 결과를 조회하고, 60초 주기로 queued 20분·running 15분 초과 작업을 FAILED 처리</div></div></div>
+      <div class="flow"><span class="old">기존 · Client → FastAPI → 매출 분석 → 결과 반환</span><br><span class="new">개선 · Client → FastAPI → Redis Queue → Celery Worker → 매출 분석</span></div>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>구조 개선</strong> - FastAPI는 분석 요청을 Redis Queue에 등록한 뒤 Job ID를 즉시 반환</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>Worker 분리</strong> - CSV 처리·데이터 병합·통계 계산·AI 추론은 Celery Worker가 담당하고, 요청 증가 시 API 서버와 별개로 Worker 수 조절</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>상태·실패 관리</strong> - Job API로 진행 상태와 결과를 조회하고, 60초 주기로 queued 20분·running 15분 초과 작업을 FAILED 처리</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">98.6%↓</div><div class="stat-label">p50 200.2s → 2.8s</div></div><div class="stat-box"><div class="stat-num">98.1%↓</div><div class="stat-label">p95 221.4s → 4.3s</div></div><div class="stat-box"><div class="stat-num">50건</div><div class="stat-label">동시 분석 요청<br>(로컬 Docker, 워밍업 3회 후 50회 측정)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">98.6%↓</div><div class="stat-label">p50 200.2s → 2.8s</div></div><div class="stat-box"><div class="stat-num">98.1%↓</div><div class="stat-label">p95 221.4s → 4.3s</div></div><div class="stat-box"><div class="stat-num">50건</div><div class="stat-label">동시 분석 요청<br>(로컬 Docker, 워밍업 3회 후 50회 측정)</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">장시간 수행되는 AI·데이터 분석 작업은 일반 HTTP 요청과 분리해야 합니다. 비동기 시스템은 작업을 Queue에 전달하는 것만으로 완성되지 않고, 작업 상태 관리·실패 처리·정체 작업 정리까지 함께 설계해야 안정적으로 운영할 수 있다는 점을 배웠습니다.</p></div>
     </article>

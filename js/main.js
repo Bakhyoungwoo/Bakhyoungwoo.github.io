@@ -30,12 +30,18 @@
   }
 
   // 스크롤 등장 애니메이션
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  } else {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  }
+  // 인쇄·전체 캡처 시 숨은 요소가 없도록
+  window.addEventListener('beforeprint', () => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')));
 
   // 현재 섹션 네비 하이라이트
   const links = [...document.querySelectorAll('.nav-links a')];

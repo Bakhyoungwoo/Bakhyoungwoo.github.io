@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://bakhyoungwoo.github.io/">
   <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/projects/marketpoke-arch.webp">
   <script>
+    document.documentElement.classList.add('js');
     try {
       var t = localStorage.getItem('theme');
       if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
@@ -55,26 +56,26 @@
     <h3 class="subhead">주제</h3>
     <p class="body-text">뉴스 크롤링, 키워드 추출, 사용자 관심사 및 클릭 이력 분석을 통해 개인화된 뉴스를 추천하고, 주식 시세·재무정보·관련 뉴스와 AI 기반 종목 분석 기능을 제공합니다. 또한 Redis, Kafka를 활용해 실시간 데이터 처리와 빠른 검색·추천 서비스를 구현했습니다.</p>
     <h3 class="subhead">주요 기능</h3>
-    <div class="feats reveal"><div class="feat-col"><h4>사용자 기능</h4><ul><li>관심 카테고리별 최신 뉴스 조회</li><li>뉴스 클릭 이력 기반 개인 맞춤형 뉴스 추천</li><li>카테고리별 주요 키워드 확인</li><li>주요 시장 지수 및 종목 정보 조회</li><li>종목 검색, 주가 차트·재무정보·관련 뉴스 확인</li><li>기간별 주식 데이터 기반 AI 분석 결과 확인</li></ul></div></div>
+    <div class="feats"><div class="feat-col"><h4>사용자 기능</h4><ul><li>관심 카테고리별 최신 뉴스 조회</li><li>뉴스 클릭 이력 기반 개인 맞춤형 뉴스 추천</li><li>카테고리별 주요 키워드 확인</li><li>주요 시장 지수 및 종목 정보 조회</li><li>종목 검색, 주가 차트·재무정보·관련 뉴스 확인</li><li>기간별 주식 데이터 기반 AI 분석 결과 확인</li></ul></div></div>
     <h3 class="subhead">전체 아키텍처</h3>
     <p class="body-text">Spring Boot가 API와 비즈니스 로직을, FastAPI가 크롤링과 AI 분석을 담당하며 두 서버는 Kafka로 연결됩니다. MySQL에 뉴스와 사용자 데이터를 저장하고, Redis로 추천 후보 캐싱과 키워드 랭킹을 관리합니다. 전체 서비스는 Docker로 구성하고 GitHub·Docker Hub 기반으로 배포합니다.</p>
-    <figure class="figure reveal">
-      <a href="assets/projects/news-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/news-arch.webp" alt="AI 뉴스 분석 시스템 아키텍처 - Spring Boot · FastAPI · Kafka · MySQL · Redis" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/news-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/news-arch.webp" alt="AI 뉴스 분석 시스템 아키텍처 - Spring Boot · FastAPI · Kafka · MySQL · Redis"></a>
       <figcaption class="figure-caption">AI 뉴스 분석 시스템 아키텍처 - Spring Boot · FastAPI · Kafka · MySQL · Redis</figcaption>
     </figure>
     <h3 class="subhead">서비스 화면</h3>
     <div class="figure-pair">
-    <figure class="figure reveal">
-      <a href="assets/projects/news-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/news-screen.webp" alt="서비스 화면 - 랜딩 · 맞춤 뉴스" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/news-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/news-screen.webp" alt="서비스 화면 - 랜딩 · 맞춤 뉴스"></a>
       <figcaption class="figure-caption">서비스 화면 - 랜딩 · 맞춤 뉴스</figcaption>
     </figure>
-    <figure class="figure reveal">
-      <a href="assets/projects/news-flow.webp" target="_blank" rel="noopener"><img src="assets/projects/news-flow.webp" alt="서비스 사용자 흐름도" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/news-flow.webp" target="_blank" rel="noopener"><img src="assets/projects/news-flow.webp" alt="서비스 사용자 흐름도"></a>
       <figcaption class="figure-caption">서비스 사용자 흐름도</figcaption>
     </figure>
     </div>
     <h3 class="subhead">사용 기술</h3>
-    <div class="tech-grid reveal"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag mine">Spring Boot</span><span class="tech-tag mine">FastAPI</span><span class="tech-tag mine">Kafka</span><span class="tech-tag mine">Redis</span><span class="tech-tag mine">MySQL</span><span class="tech-tag mine">JWT</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag mine">KR-SBERT</span><span class="tech-tag mine">KeyBERT</span><span class="tech-tag mine">Okt</span><span class="tech-tag mine">Hugging Face</span></div></div><div class="tech-group"><h4>Infra · Ops</h4><div class="tech-tags"><span class="tech-tag mine">Docker</span><span class="tech-tag mine">Docker Hub</span><span class="tech-tag mine">Prometheus</span><span class="tech-tag mine">Grafana</span></div></div></div>
+    <div class="tech-grid"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag mine">Spring Boot</span><span class="tech-tag mine">FastAPI</span><span class="tech-tag mine">Kafka</span><span class="tech-tag mine">Redis</span><span class="tech-tag mine">MySQL</span><span class="tech-tag mine">JWT</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag mine">KR-SBERT</span><span class="tech-tag mine">KeyBERT</span><span class="tech-tag mine">Okt</span><span class="tech-tag mine">Hugging Face</span></div></div><div class="tech-group"><h4>Infra · Ops</h4><div class="tech-tags"><span class="tech-tag mine">Docker</span><span class="tech-tag mine">Docker Hub</span><span class="tech-tag mine">Prometheus</span><span class="tech-tag mine">Grafana</span></div></div></div>
   </div>
 </section>
 
@@ -84,20 +85,20 @@
     <h2 class="d-section-title">핵심 기여</h2>
     <h3 class="subhead">Kafka 기반 비동기 뉴스 크롤링 파이프라인</h3>
     <p class="body-text">동기 HTTP로 크롤링을 연동할 때 평균 20.4초 걸리는 작업이 10초 Timeout을 초과해 요청이 실패하는 문제를 발견했습니다. Kafka Producer/Consumer 구조로 전환해 요청은 즉시 202 Accepted로 응답하고, Consumer가 크롤링·저장을 비동기로 처리하도록 개선했습니다.</p>
-    <figure class="figure reveal">
-      <a href="assets/projects/news-sequence.webp" target="_blank" rel="noopener"><img src="assets/projects/news-sequence.webp" alt="크롤링 시퀀스 다이어그램 - Redis 잠금으로 카테고리별 중복 크롤링 방지" loading="lazy"></a>
+    <figure class="figure">
+      <a href="assets/projects/news-sequence.webp" target="_blank" rel="noopener"><img src="assets/projects/news-sequence.webp" alt="크롤링 시퀀스 다이어그램 - Redis 잠금으로 카테고리별 중복 크롤링 방지"></a>
       <figcaption class="figure-caption">크롤링 시퀀스 다이어그램 - Redis 잠금으로 카테고리별 중복 크롤링 방지</figcaption>
     </figure>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">3.5ms</div><div class="stat-label">수집 요청 접수 API<br>평균 응답</div></div><div class="stat-box"><div class="stat-num">8ms</div><div class="stat-label">수집 요청 접수 API<br>p95 응답</div></div><div class="stat-box"><div class="stat-num">0건</div><div class="stat-label">Timeout 실패</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">3.5ms</div><div class="stat-label">수집 요청 접수 API<br>평균 응답</div></div><div class="stat-box"><div class="stat-num">8ms</div><div class="stat-label">수집 요청 접수 API<br>p95 응답</div></div><div class="stat-box"><div class="stat-num">0건</div><div class="stat-label">Timeout 실패</div></div></div>
     <h3 class="subhead">Redis Cache-Aside 기반 뉴스 조회 캐싱</h3>
     <p class="body-text">여러 사용자가 공통으로 조회하는 카테고리별 추천 후보 뉴스를 요청마다 MySQL에서 반복 조회해 불필요한 DB 부하가 쌓이는 구조였습니다. Redis에 우선 캐싱하고 캐시 미스 시에만 MySQL을 조회해 채우는 Cache-Aside 패턴을 적용하고, 오래된 데이터 방지를 위해 10분 TTL을 설정했습니다.</p>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">68.1%↓</div><div class="stat-label">동시 요청 100건<br>조회 p95 36.6ms → 11.7ms</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">68.1%↓</div><div class="stat-label">동시 요청 100건<br>조회 p95 36.6ms → 11.7ms</div></div></div>
     <h3 class="subhead">Redis 기반 개인화 뉴스 추천</h3>
     <p class="body-text">클릭한 뉴스의 키워드를 Redis ZSET에 누적해 사용자 관심도를 관리하고, 기사 키워드와 비교해 개인화 추천을 제공합니다. 신규 사용자를 위한 Cold Start fallback과 JWT 인증·북마크 API도 구현했습니다.</p>
     <h3 class="subhead">AI 기반 뉴스 키워드 추출</h3>
     <p class="body-text">추출한 키워드는 Redis ZSET에 누적해 카테고리별 실시간 키워드 랭킹으로 제공합니다.</p>
-    <div class="flow-steps reveal"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>형태소 분석</strong> - Okt로 기사 본문 형태소 분석</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>필터링</strong> - 불용어·숫자·1글자 토큰 제거</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>키워드 추출</strong> - KR-SBERT 기반 KeyBERT와 MMR로 대표성과 다양성을 함께 고려</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>랭킹</strong> - Redis ZSET에 누적해 카테고리별 실시간 랭킹 제공</div></div></div>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중<br>조사·어미 포함 비율</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>형태소 분석</strong> - Okt로 기사 본문 형태소 분석</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>필터링</strong> - 불용어·숫자·1글자 토큰 제거</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>키워드 추출</strong> - KR-SBERT 기반 KeyBERT와 MMR로 대표성과 다양성을 함께 고려</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>랭킹</strong> - Redis ZSET에 누적해 카테고리별 실시간 랭킹 제공</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중<br>조사·어미 포함 비율</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
     <h3 class="subhead">외부 AI 분석 서비스 연동 및 장애 격리</h3>
     <p class="body-text">종목 분석 데이터를 외부 AI(OpenBB) 서비스에서 받아오는 구조에서, 해당 서비스 장애가 전체 장애로 전파되지 않도록 Fallback 응답을 설계했습니다. 한글 종목명 검색 시 발생하던 URL 이중 인코딩 버그도 발견해 수정했습니다. Prometheus·Grafana로 토픽별 처리량·Consumer Lag·API 응답시간을 관측합니다.</p>
   </div>
@@ -113,11 +114,11 @@
     <div class="ts-block"><div class="ts-tag">문제</div><p class="body-text">Spring Boot와 Python 크롤러를 동기 HTTP로 연동한 이후, 크롤링 작업이 HTTP Timeout을 초과해 요청이 실패했습니다. 약 41건의 뉴스를 수집하는 데 평균 20.4초가 걸렸지만 RestTemplate의 Read Timeout은 10초로 설정되어 있었습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">진단</div><p class="body-text">크롤링이 완료될 때까지 Spring Boot가 HTTP 응답을 대기하는 구조였습니다. Python 크롤러는 계속 실행 중이었지만 Spring Boot에서 먼저 Timeout이 발생했고, 크롤링 시간이 늘어나면 같은 문제가 반복될 수 있었습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">해결</div><div>
-      <div class="flow reveal"><span class="old">기존 · Request → Spring Boot → Python Crawler → 완료 대기 → Response</span><br><span class="new">개선 · Request → Spring Boot → Kafka Producer → 202 Accepted<br>Kafka → Consumer → Python Crawler → Spring 내부 API → DB 저장</span></div>
-    <div class="flow-steps reveal"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>생명주기 분리</strong> - Timeout을 늘리는 대신 크롤링 작업과 API 요청의 생명주기를 Kafka로 분리</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>즉시 응답</strong> - 메시지 발행에 성공하면 202 Accepted를 즉시 반환</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>비동기 저장</strong> - Consumer가 크롤러를 호출하고, 결과는 Spring 내부 API로 DB에 저장</div></div></div>
+      <div class="flow"><span class="old">기존 · Request → Spring Boot → Python Crawler → 완료 대기 → Response</span><br><span class="new">개선 · Request → Spring Boot → Kafka Producer → 202 Accepted<br>Kafka → Consumer → Python Crawler → Spring 내부 API → DB 저장</span></div>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>생명주기 분리</strong> - Timeout을 늘리는 대신 크롤링 작업과 API 요청의 생명주기를 Kafka로 분리</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>즉시 응답</strong> - 메시지 발행에 성공하면 202 Accepted를 즉시 반환</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>비동기 저장</strong> - Consumer가 크롤러를 호출하고, 결과는 Spring 내부 API로 DB에 저장</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">3.5ms</div><div class="stat-label">요청 접수 API 평균</div></div><div class="stat-box"><div class="stat-num">8ms</div><div class="stat-label">요청 접수 API p95</div></div><div class="stat-box"><div class="stat-num">0건</div><div class="stat-label">크롤링 시간과 무관한<br>Timeout 실패</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">3.5ms</div><div class="stat-label">요청 접수 API 평균</div></div><div class="stat-box"><div class="stat-num">8ms</div><div class="stat-label">요청 접수 API p95</div></div><div class="stat-box"><div class="stat-num">0건</div><div class="stat-label">크롤링 시간과 무관한<br>Timeout 실패</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">장시간 작업에서는 Timeout 값을 늘리는 것보다 API 요청과 실제 작업의 실행 흐름을 분리하는 것이 중요하다는 점을 배웠습니다. Kafka는 단순한 메시지 전달을 넘어 서비스 간 작업 생명주기를 분리하는 도구가 될 수 있음을 경험했습니다.</p></div>
     </article>
@@ -127,13 +128,13 @@
     <div class="ts-block"><div class="ts-tag">문제</div><p class="body-text">사용자 관심사 기반 뉴스 추천에서 추천 후보로 쓰이는 카테고리별 최신 뉴스 목록을 요청마다 MySQL에서 조회했습니다. 추천 결과는 사용자마다 달라도 후보 뉴스는 공통 데이터라, 요청이 늘수록 같은 쿼리가 반복 실행되었습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">진단</div><p class="body-text">추천 후보 뉴스는 조회 빈도가 높고 변경 주기가 상대적으로 낮은데도 매 요청마다 MySQL을 직접 조회하고 있었고, 이로 인해 불필요한 DB 접근과 부하가 누적될 수 있다고 판단했습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">해결</div><div>
-      <div class="flow reveal"><span class="old">기존 · Request → Spring Boot → MySQL → 추천 점수 계산 → Response</span><br><span class="new">개선 · Request → Spring Boot → Redis 조회<br>Cache Hit → 추천 점수 계산 → Response<br>Cache Miss → MySQL 조회 → Redis 저장 → 추천 점수 계산 → Response</span></div>
-    <div class="flow-steps reveal"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>Cache-Aside 적용</strong> - API 요청 시 Redis를 먼저 조회하고, 캐시가 없거나 만료된 경우에만 MySQL 조회 후 Redis에 저장</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>캐시 갱신 연동</strong> - 1번 트러블 슈팅의 Kafka Consumer가 크롤링 결과를 처리하면서 MySQL과 Redis의 추천 후보를 함께 갱신</div></div></div>
+      <div class="flow"><span class="old">기존 · Request → Spring Boot → MySQL → 추천 점수 계산 → Response</span><br><span class="new">개선 · Request → Spring Boot → Redis 조회<br>Cache Hit → 추천 점수 계산 → Response<br>Cache Miss → MySQL 조회 → Redis 저장 → 추천 점수 계산 → Response</span></div>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>Cache-Aside 적용</strong> - API 요청 시 Redis를 먼저 조회하고, 캐시가 없거나 만료된 경우에만 MySQL 조회 후 Redis에 저장</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>캐시 갱신 연동</strong> - 1번 트러블 슈팅의 Kafka Consumer가 크롤링 결과를 처리하면서 MySQL과 Redis의 추천 후보를 함께 갱신</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <div class="stat-row reveal"><div class="stat-box"><div class="stat-num">21.4%↓</div><div class="stat-label">평균 조회 시간<br>2.848ms → 2.238ms</div></div><div class="stat-box"><div class="stat-num">68.1%↓</div><div class="stat-label">동시성 100 p95<br>36.554ms → 11.670ms</div></div></div>
-    <figure class="figure reveal">
-      <a href="assets/projects/news-cache-bench.webp" target="_blank" rel="noopener"><img src="assets/projects/news-cache-bench.webp" alt="동시성별 MySQL 직접 조회 vs Redis Cache Hit p95" loading="lazy"></a>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">21.4%↓</div><div class="stat-label">평균 조회 시간<br>2.848ms → 2.238ms</div></div><div class="stat-box"><div class="stat-num">68.1%↓</div><div class="stat-label">동시성 100 p95<br>36.554ms → 11.670ms</div></div></div>
+    <figure class="figure">
+      <a href="assets/projects/news-cache-bench.webp" target="_blank" rel="noopener"><img src="assets/projects/news-cache-bench.webp" alt="동시성별 MySQL 직접 조회 vs Redis Cache Hit p95"></a>
       <figcaption class="figure-caption">동시성별 MySQL 직접 조회 vs Redis Cache Hit p95</figcaption>
     </figure>
     </div></div>
