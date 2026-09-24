@@ -178,98 +178,15 @@
     <div class="project-number">01</div>
     <div>
       <div class="project-top">
-        <h3 class="project-name">Market Poke <small>마켓포케</small></h3>
+        <h3 class="project-name"><a href="marketpoke.html">Market Poke</a></h3>
         <span class="badge gold">KT AIVLE Collaboration상</span>
       </div>
-      <p class="project-sub">AI 기반 매장 분석 및 온오프라인 운영관리 플랫폼</p>
-      <div class="project-meta">
-        <span>2026.06 – 2026.08</span><span>KT AIVLE School 9기 빅프로젝트</span><span><b>6인 팀 · 팀장</b></span><span>기여도 30%</span>
-      </div>
-      <p class="project-summary">POS·상권·기상 데이터로 매출 변화 원인을 분석하고, AI가 대응 전략 추천부터 실행 후 효과 검증까지 수행하는 플랫폼.</p>
-      <ul class="highlights"><li>API 응답 p50 98.6%↓</li><li>전략 평균 보상 2.26배</li><li>Celery·Redis 비동기</li><li>LangGraph 파이프라인</li></ul>
+      <p class="project-period">KT AIVLE School 9기 AI 개발자 트랙 빅프로젝트 (6인 · 팀장) · 2026.06 – 2026.08</p>
+      <p class="project-desc">POS·상권·외부 데이터를 기반으로 매출 변화 원인을 분석하고, AI가 대응 전략을 추천한 뒤 정책 평가와 실행 후 효과 검증까지 수행하는 매출 분석·의사결정 지원 시스템입니다.</p>
       <div class="project-stack tags compact">
         <span class="tag hl">Spring Boot</span><span class="tag hl">FastAPI</span><span class="tag hl">Celery</span><span class="tag hl">Redis</span><span class="tag">MySQL</span><span class="tag">LangGraph</span><span class="tag">Docker</span><span class="tag">AWS</span>
       </div>
-      <div class="project-actions">
-        <button class="more-btn" type="button" aria-expanded="false" aria-controls="detail-1"><span class="more-label">자세히 보기</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-        <a href="https://github.com/AIVLE-07-20-big-project" target="_blank" rel="noopener">GitHub →</a>
-        <a href="https://www.youtube.com/watch?v=tdjR77kljeo" target="_blank" rel="noopener">시연 영상 →</a>
-      </div>
-      <div class="project-detail" id="detail-1" hidden>
-      <p class="sub-label">프로젝트 소개</p>
-      <p class="project-desc" style="margin-top:0">POS·상권·기상 데이터를 기반으로 매출 변화 원인을 분석하고, AI가 대응 전략을 추천한 뒤 정책 평가와 실행 후 효과 검증까지 수행하는 매출 분석·의사결정 지원 시스템입니다. 분석 요청 API와 분석 워커를 분리하는 비동기 아키텍처, LangGraph 기반 전략 추천·검증 파이프라인, 도메인 기반 DB 설계와 인프라 구축을 담당했습니다.</p>
-      <p class="sub-label">맡은 역할</p>
-      <div class="roles">
-        <span class="tag">대응 전략 추천 모델 · 사전 검증 파이프라인</span><span class="tag">매출 분석</span><span class="tag">관리자 게시판 · 인프라 구축</span><span class="tag">DB 설계</span>
-      </div>
-
-      <p class="sub-label">핵심 기여</p>
-      <div class="contrib">
-        <div class="contrib-item">
-          <h4>Celery·Redis 기반 비동기 분석 처리</h4>
-          <p>장시간 매출 분석을 Celery Worker로 분리하고 QUEUED→RUNNING→DONE/FAILED 상태를 관리하는 Job API 구현. 정체 작업은 Celery Beat로 자동 정리해 분석 부하와 일반 API를 격리.</p>
-          <div class="contrib-result">동시 50건 · p50 200.2s → 2.8s (98.6%↓)</div>
-        </div>
-        <div class="contrib-item">
-          <h4>LangGraph 전략 추천·검증 파이프라인</h4>
-          <p>진단 → 전략 추천 → RAG 근거 검색 → 담당자 승인 → 리포트 → 효과 검증을 상태 기반 워크플로우로 구현. BAAI/bge-m3 기반 근거 검색과 생성 후 재검증으로 환각 최소화.</p>
-          <div class="contrib-result">Contextual Bandit · 기준 정책 대비 평균 보상 2.26배</div>
-        </div>
-        <div class="contrib-item">
-          <h4>DB 설계 및 운영</h4>
-          <p>전체 기능을 도메인별로 설계하고 Spring Data JPA·MySQL 8로 정합성 관리. 주문·상품 관계와 판매 시점 가격 보존 구조 적용, JWT 관리자 인증과 S3 첨부파일 처리 구현.</p>
-          <div class="contrib-result">Spring Boot ↔ FastAPI REST 연동 · RDS · S3</div>
-        </div>
-      </div>
-
-      <p class="sub-label">Architecture</p>
-      <div class="gallery">
-        <figure>
-          <a href="assets/projects/marketpoke-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-arch.webp" alt="Market Poke AWS 아키텍처" loading="lazy"></a>
-          <figcaption>AWS 아키텍처 — ECS Fargate (Spring Boot · FastAPI · Celery Worker/Beat) + RDS + ElastiCache</figcaption>
-        </figure>
-        <figure>
-          <a href="assets/projects/marketpoke-langgraph.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-langgraph.webp" alt="LangGraph 전략 추천 워크플로우" loading="lazy"></a>
-          <figcaption>LangGraph 전략 추천·승인·검증 워크플로우</figcaption>
-        </figure>
-      </div>
-      <div class="gallery even" style="margin-top:16px">
-        <figure>
-          <a href="assets/projects/marketpoke-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-screen.webp" alt="Market Poke 서비스 화면" loading="lazy"></a>
-          <figcaption>서비스 화면 — 랜딩 · 로그인</figcaption>
-        </figure>
-        <figure>
-          <a href="assets/projects/marketpoke-erd.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-erd.webp" alt="Market Poke 리뷰 분석 도메인 ERD" loading="lazy"></a>
-          <figcaption>ERD (리뷰 분석 도메인 일부)</figcaption>
-        </figure>
-      </div>
-
-      <details class="trouble">
-        <summary>
-          <span><span class="ts-label">Troubleshooting</span>장시간 매출 분석으로 인한 API 응답 지연</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-        <div class="ts-body">
-          <div class="ts-row"><b>문제</b><div>FastAPI가 CSV 처리·데이터 병합·통계 분석·AI 추론을 모두 끝낸 뒤 응답하는 동기 구조. 분석 시간만큼 HTTP 요청이 유지되고, 요청이 몰리면 일반 API까지 지연.</div></div>
-          <div class="ts-row"><b>진단</b><div>장시간 분석이 HTTP 요청 내부에서 실행되며 일반 API와 같은 실행 환경을 공유. CPU 집약적인 처리와 추론이 요청 처리 자원을 점유해 분석 시간에 비례해 응답 시간이 증가.</div></div>
-          <div class="ts-row"><b>해결</b><div>
-            <div class="flow"><span class="old">기존 · Client → FastAPI → 매출 분석 → 결과 반환</span><br><span class="new">개선 · Client → FastAPI → Redis Queue → Celery Worker → 매출 분석</span></div>
-            <ol>
-              <li>FastAPI는 요청을 Redis Queue에 등록하고 Job ID를 즉시 반환</li>
-              <li>CPU 사용량이 높은 작업은 Celery Worker가 전담, API 서버와 독립적으로 Worker 수 확장</li>
-              <li>Job API로 상태 조회, 60초 주기로 queued 20분·running 15분 초과 작업을 FAILED 처리</li>
-            </ol>
-            <figure style="margin-top:12px;border:1px solid var(--gray-line);border-radius:4px;background:#fff;padding:12px;max-width:560px"><img src="assets/projects/marketpoke-job.webp" alt="Job 상태 전이 다이어그램" loading="lazy"></figure>
-          </div></div>
-          <div class="ts-row"><b>결과</b><div class="result-box"><ul>
-            <li>동시 분석 요청 50건: p50 200.2s → 2.8s (98.6%↓), p95 221.4s → 4.3s (98.1%↓)</li>
-            <li>요청 스레드 장시간 점유 해소, Worker 수 조절로 처리량 확장 구조 확보</li>
-          </ul></div></div>
-          <div class="ts-row"><b>배운 점</b><div>비동기 시스템은 큐에 넘기는 것으로 끝나지 않고, 상태 관리·실패 처리·정체 작업 정리까지 설계해야 안정적으로 운영된다.</div></div>
-        </div>
-      </details>
-
-      </div>
+      <a class="project-more" href="marketpoke.html">자세히 보기 →</a>
     </div>
   </article>
 
@@ -278,94 +195,15 @@
     <div class="project-number">02</div>
     <div>
       <div class="project-top">
-        <h3 class="project-name">강원동행 <small>Gangwon Companion</small></h3>
+        <h3 class="project-name"><a href="gangwon.html">강원동행</a></h3>
+        
       </div>
-      <p class="project-sub">개인 맞춤형 강원도 여행 코스 추천 서비스</p>
-      <div class="project-meta">
-        <span>2026.05 – 2026.08</span><span>2026 관광데이터 활용 공모전 (웹·앱 개발)</span><span><b>3인 팀</b></span><span>기여도 40%</span>
-      </div>
-      <p class="project-summary">여행 조건과 선호를 분석해 AI가 강원도 맞춤 여행 코스를 생성·검증하는 서비스.</p>
-      <ul class="highlights"><li>검색 p95 81.7%↓</li><li>Claim Violation 83.3%→0%</li><li>Kafka CDC 자동 복구</li><li>Terraform IaC</li></ul>
+      <p class="project-period">2026 관광데이터 활용 공모전 웹·앱 개발 부문 (3인) · 2026.05 – 2026.08</p>
+      <p class="project-desc">사용자의 여행 조건과 선호를 분석해 관광지·음식점·숙소를 검색하고, AI가 개인 맞춤형 강원도 여행 코스를 생성·검증하는 여행 의사결정 지원 서비스입니다. Elasticsearch 기반 검색과 CDC 파이프라인으로 검색엔진을 구축하고, RAG를 이용해 사용자 맞춤 여행 코스를 추천합니다.</p>
       <div class="project-stack tags compact">
         <span class="tag hl">Spring Boot</span><span class="tag hl">Elasticsearch</span><span class="tag hl">Kafka</span><span class="tag">Debezium</span><span class="tag">PostgreSQL</span><span class="tag">FastAPI</span><span class="tag">LangGraph</span><span class="tag">Terraform</span><span class="tag">AWS ECS</span>
       </div>
-      <div class="project-actions">
-        <button class="more-btn" type="button" aria-expanded="false" aria-controls="detail-2"><span class="more-label">자세히 보기</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-        <a href="https://github.com/Gangwon-Companion" target="_blank" rel="noopener">GitHub →</a>
-      </div>
-      <div class="project-detail" id="detail-2" hidden>
-      <p class="sub-label">프로젝트 소개</p>
-      <p class="project-desc" style="margin-top:0">사용자의 여행 조건과 선호를 분석해 관광지·음식점·숙소를 검색하고, AI가 맞춤형 여행 코스를 생성·검증하는 서비스입니다. 빠르고 신뢰할 수 있는 추천을 위해 Elasticsearch 통합 검색, Kafka CDC 동기화, LangGraph 기반 코스 생성·근거 검증 구조를 구축했습니다.</p>
-      <p class="sub-label">맡은 역할</p>
-      <div class="roles">
-        <span class="tag">Elasticsearch 기반 코스 추천 에이전트</span><span class="tag">Prometheus·Grafana 모니터링</span><span class="tag">AWS 인프라 · CI/CD</span>
-      </div>
-
-      <p class="sub-label">핵심 기여</p>
-      <div class="contrib">
-        <div class="contrib-item">
-          <h4>Elasticsearch 통합 장소 검색</h4>
-          <p>RDB에 몰리던 복합 조건 조회(지역·테마·반려동물·휠체어 접근성·영업시간)를 Elasticsearch로 분리하고 관광지·음식점·숙소를 통합 색인.</p>
-          <div class="contrib-result">k6 VU20 · p95 99.3ms → 18.2ms (81.7%↓) · 116.9 → 140.0 req/s</div>
-        </div>
-        <div class="contrib-item">
-          <h4>Kafka·Debezium CDC 동기화</h4>
-          <p>PostgreSQL 변경을 Debezium → Kafka → Consumer로 인덱스에 반영해 이중 쓰기 제거. 지수 backoff 재시도와 DLT 기반 최신값 재색인으로 장애 복구 보장.</p>
-          <div class="contrib-result">ES 120초 장애 후 34.8초 내 자동 반영 · 반영 p95 1,054ms</div>
-        </div>
-        <div class="contrib-item">
-          <h4>LangGraph 코스 생성·근거 검증</h4>
-          <p>요청 분석 → 장소 검색 → 일정 생성 → 검증 파이프라인. 일정 중복·시간 충돌 검증과 근거 없는 주장 차단, 근거 부족 시 fallback 응답.</p>
-          <div class="contrib-result">환각 유도 60케이스 · Claim Violation 83.3% → 0%</div>
-        </div>
-        <div class="contrib-item">
-          <h4>AWS 인프라 · CI/CD</h4>
-          <p>Terraform으로 VPC·ALB·ECS Fargate·RDS·S3 코드화. GitHub Actions + OIDC로 ECR 빌드·ECS 배포, FastAPI는 같은 Task 내부 통신으로 외부 노출 차단.</p>
-          <div class="contrib-result">Terraform IaC · Multi-AZ · Prometheus·Grafana</div>
-        </div>
-      </div>
-
-      <p class="sub-label">Architecture</p>
-      <div class="gallery">
-        <figure>
-          <a href="assets/projects/gangwon-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-arch.webp" alt="강원동행 AWS 아키텍처" loading="lazy"></a>
-          <figcaption>AWS Multi-AZ 아키텍처 — Terraform · GitHub Actions OIDC · ECS Fargate</figcaption>
-        </figure>
-        <figure>
-          <a href="assets/projects/gangwon-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-screen.webp" alt="강원동행 AI 여행 추천 화면" loading="lazy"></a>
-          <figcaption>AI 여행 코스 추천 화면</figcaption>
-        </figure>
-      </div>
-
-      <details class="trouble">
-        <summary>
-          <span><span class="ts-label">Troubleshooting</span>RDB 검색 병목과 Elasticsearch 인덱스 정합성 문제</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-        <div class="ts-body">
-          <div class="ts-row"><b>문제</b><div>AI 코스 생성 중 장소 후보를 PostgreSQL에서 반복 조회하면서 복합 조건 검색 부하가 증가, 검색 응답과 코스 생성 시간이 함께 지연.</div></div>
-          <div class="ts-row"><b>진단</b><div>다양한 조건의 문자열 검색·다중 필터링이 RDB에 집중. Elasticsearch 도입 후에는 PostgreSQL 변경이 인덱스에 자동 반영되지 않는 정합성 문제도 발생.</div></div>
-          <div class="ts-row"><b>해결</b><div>
-            <figure style="margin-bottom:12px;border:1px solid var(--gray-line);border-radius:4px;background:#fff;padding:10px;max-width:640px"><img src="assets/projects/gangwon-cdc.webp" alt="PostgreSQL → Debezium → Kafka → Consumer → Elasticsearch CDC 흐름" loading="lazy"></figure>
-            <ol>
-              <li><b>검색 구조 개선</b> — 검색 부하를 트랜잭션 DB에서 분리해 Elasticsearch 통합 인덱스와 복합 조건 검색 API로 전환</li>
-              <li><b>CDC 파이프라인</b> — PostgreSQL을 원본으로 두고 Debezium이 변경을 Kafka로 발행, Spring Kafka Consumer가 인덱스 생성·수정·삭제</li>
-              <li><b>장애 복구 검증</b> — ES를 약 20초 중지하자 복구 후에도 미반영. 재시도(약 7초)가 장애보다 짧아 DLT로 넘어가 로그만 남은 것이 원인 → 지수 backoff로 약 61초까지 연장, DLT는 장소 ID만 기록하고 스케줄러가 DB 최신값으로 재색인해 순서 역전까지 방지</li>
-            </ol>
-          </div></div>
-          <div class="ts-row"><b>결과</b><div class="result-box"><ul>
-            <li>검색 API p95 99.3ms → 18.2ms (81.7%↓), p99 148.5ms → 26.6ms (82.1%↓), 처리량 19.8%↑</li>
-            <li>DB 변경 → 검색 반영 p95 1,054ms, 30회 반복 전건 반영</li>
-          </ul></div></div>
-          <div class="ts-row"><b>관측</b><div>
-            <figure style="border:1px solid var(--gray-line);border-radius:4px;overflow:hidden;max-width:760px"><a href="assets/projects/gangwon-grafana.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-grafana.webp" alt="Grafana 모니터링 대시보드" loading="lazy"></a></figure>
-            <p style="font-size:.78rem;color:var(--gray-mid);margin-top:6px">Prometheus·Grafana — HTTP 처리량·p95·Kafka Consumer Lag 대시보드</p>
-          </div></div>
-          <div class="ts-row"><b>배운 점</b><div>검색 성능은 쿼리 튜닝보다 트랜잭션과 검색을 분리하고 목적에 맞는 저장소를 고르는 문제이며, 동기화·재처리·모니터링까지 함께 설계해야 한다.</div></div>
-        </div>
-      </details>
-
-      </div>
+      <a class="project-more" href="gangwon.html">자세히 보기 →</a>
     </div>
   </article>
 
@@ -374,112 +212,15 @@
     <div class="project-number">03</div>
     <div>
       <div class="project-top">
-        <h3 class="project-name">AI 뉴스 분석 시스템 <small>vp_bank</small></h3>
+        <h3 class="project-name"><a href="news.html">AI 뉴스 분석 시스템</a></h3>
         <span class="badge accent">1인 개발</span>
       </div>
-      <p class="project-sub">AI 키워드 분석 기반 맞춤 뉴스·종목 추천 플랫폼</p>
-      <div class="project-meta">
-        <span>2025.12 – 2026.08</span><span>개인 프로젝트</span><span><b>기획 · 설계 · 백엔드 · AI</b></span><span>기여도 100%</span>
-      </div>
-      <p class="project-summary">실시간 수집한 뉴스·금융 데이터를 AI로 분석해 맞춤 뉴스와 종목 정보를 제공하는 1인 개발 플랫폼.</p>
-      <ul class="highlights"><li>크롤링 Timeout 제거</li><li>조회 p95 68.1%↓</li><li>키워드 처리 97.0%↓</li><li>Kafka·Redis 실시간 처리</li></ul>
+      <p class="project-period">충북대학교 컴퓨터공학과 개인 프로젝트 (1인) · 2025.12 – 2026.08</p>
+      <p class="project-desc">실시간으로 수집한 뉴스와 금융 데이터를 AI로 분석해 사용자 맞춤형 뉴스와 종목 정보를 제공하는 AI 금융·뉴스 플랫폼입니다. 뉴스 크롤링, 키워드 추출, 사용자 관심사 및 클릭 이력 분석을 통해 개인화된 뉴스를 추천하고, 주식 시세·재무정보·관련 뉴스와 AI 기반 종목 분석 기능을 제공합니다. 또한 Redis, Kafka를 활용해 실시간 데이터 처리와 빠른 검색·추천 서비스를 구현했습니다.</p>
       <div class="project-stack tags compact">
         <span class="tag hl">Spring Boot</span><span class="tag hl">Kafka</span><span class="tag hl">Redis</span><span class="tag">FastAPI</span><span class="tag">KR-SBERT</span><span class="tag">MySQL</span><span class="tag">Docker</span><span class="tag">Grafana</span>
       </div>
-      <div class="project-actions">
-        <button class="more-btn" type="button" aria-expanded="false" aria-controls="detail-3"><span class="more-label">자세히 보기</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
-        <a href="https://github.com/Bakhyoungwoo/vp_bank" target="_blank" rel="noopener">GitHub →</a>
-      </div>
-      <div class="project-detail" id="detail-3" hidden>
-      <p class="sub-label">프로젝트 소개</p>
-      <p class="project-desc" style="margin-top:0">실시간으로 수집한 뉴스와 금융 데이터를 AI로 분석해 사용자 맞춤형 뉴스와 종목 정보를 제공합니다. 뉴스 크롤링·키워드 추출, 관심사·클릭 이력 기반 추천, 주식 시세·재무정보 연동 AI 종목 분석을 구현하고, Kafka·Redis로 실시간 데이터 처리 구조를 구축했습니다.</p>
-      <p class="sub-label">핵심 기여</p>
-      <div class="contrib">
-        <div class="contrib-item">
-          <h4>Kafka 비동기 뉴스 수집</h4>
-          <p>평균 20.4초 걸리는 크롤링이 10초 Read Timeout을 넘던 문제를 Producer/Consumer 구조로 해결. 요청은 즉시 202 Accepted.</p>
-          <div class="contrib-result">Timeout 실패 제거 · 접수 API 평균 3.5ms / p95 8ms</div>
-        </div>
-        <div class="contrib-item">
-          <h4>Redis Cache-Aside 캐싱</h4>
-          <p>여러 사용자가 공통으로 쓰는 카테고리별 추천 후보 뉴스를 캐싱, 10분 TTL로 최신성 유지. Consumer가 MySQL·Redis를 함께 갱신.</p>
-          <div class="contrib-result">동시 100 · p95 36.6ms → 11.7ms (68.1%↓)</div>
-        </div>
-        <div class="contrib-item">
-          <h4>KR-SBERT 키워드 추출</h4>
-          <p>Okt 형태소 분석과 불용어 필터링 후 KeyBERT·MMR로 키워드 추출, Redis ZSET으로 실시간 랭킹과 개인화 관심도 관리.</p>
-          <div class="contrib-result">조사·어미 포함 86.7% → 0% · 처리 48.35s → 1.47s</div>
-        </div>
-        <div class="contrib-item">
-          <h4>장애 격리 · 모니터링</h4>
-          <p>외부 AI(OpenBB) 장애 시 Fallback 응답으로 전파 차단, 한글 종목명 URL 이중 인코딩 버그 수정. Prometheus·Grafana로 Consumer Lag·응답시간 관측.</p>
-          <div class="contrib-result">Fallback 설계 · Kafka 메트릭 대시보드</div>
-        </div>
-      </div>
-
-      <p class="sub-label">Architecture</p>
-      <div class="gallery even">
-        <figure>
-          <a href="assets/projects/news-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/news-arch.webp" alt="뉴스 분석 시스템 아키텍처" loading="lazy"></a>
-          <figcaption>시스템 아키텍처 — Spring Boot · FastAPI · Kafka · Redis · MySQL</figcaption>
-        </figure>
-        <figure>
-          <a href="assets/projects/news-sequence.webp" target="_blank" rel="noopener"><img src="assets/projects/news-sequence.webp" alt="크롤링 시퀀스 다이어그램" loading="lazy"></a>
-          <figcaption>Kafka 기반 크롤링 시퀀스 다이어그램</figcaption>
-        </figure>
-      </div>
-      <div class="gallery" style="margin-top:16px">
-        <figure>
-          <a href="assets/projects/news-screen.webp" target="_blank" rel="noopener"><img src="assets/projects/news-screen.webp" alt="뉴스 분석 서비스 화면" loading="lazy"></a>
-          <figcaption>서비스 화면 — 랜딩 · 맞춤 뉴스</figcaption>
-        </figure>
-        <figure>
-          <a href="assets/projects/news-flow.webp" target="_blank" rel="noopener"><img src="assets/projects/news-flow.webp" alt="서비스 사용자 흐름도" loading="lazy"></a>
-          <figcaption>서비스 사용자 흐름도</figcaption>
-        </figure>
-      </div>
-
-      <details class="trouble">
-        <summary>
-          <span><span class="ts-label">Troubleshooting 1</span>동기 HTTP 크롤링 Timeout과 요청 생명주기 결합</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-        <div class="ts-body">
-          <div class="ts-row"><b>문제</b><div>Spring Boot와 Python 크롤러를 동기 HTTP로 연동. 약 41건 수집에 평균 20.4초가 걸렸지만 RestTemplate Read Timeout은 10초라 요청 실패.</div></div>
-          <div class="ts-row"><b>진단</b><div>크롤러는 계속 실행 중인데 Spring Boot가 먼저 Timeout. 크롤링 시간이 늘면 같은 문제가 반복되는 구조.</div></div>
-          <div class="ts-row"><b>해결</b><div>
-            Timeout을 늘리는 대신 요청과 작업의 생명주기를 분리.
-            <div class="flow"><span class="old">기존 · Request → Spring Boot → Python Crawler → 완료 대기 → Response</span><br><span class="new">개선 · Request → Spring Boot → Kafka Producer → 202 Accepted</span><br><span class="new">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kafka → Consumer → Python Crawler → 내부 API → DB 저장</span></div>
-          </div></div>
-          <div class="ts-row"><b>결과</b><div class="result-box"><ul>
-            <li>요청 접수 API 평균 3.5ms / p95 8ms, 크롤링 시간과 무관하게 Timeout 제거</li>
-          </ul></div></div>
-          <div class="ts-row"><b>배운 점</b><div>장시간 작업은 Timeout 값을 키우기보다 요청과 실행 흐름을 분리해야 하며, Kafka는 서비스 간 작업 생명주기를 분리하는 도구가 된다.</div></div>
-        </div>
-      </details>
-      <details class="trouble">
-        <summary>
-          <span><span class="ts-label">Troubleshooting 2</span>반복 RDB 조회로 인한 추천 후보 조회 성능·DB 부하</span>
-          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-        <div class="ts-body">
-          <div class="ts-row"><b>문제</b><div>추천 점수 계산에 쓰는 카테고리별 최신 뉴스를 요청마다 MySQL에서 조회. 사용자별 결과는 달라도 후보 뉴스는 공통이라 같은 쿼리가 반복 실행.</div></div>
-          <div class="ts-row"><b>진단</b><div>조회 빈도는 높고 변경 주기는 낮은 데이터를 매번 DB에서 읽어 불필요한 부하가 누적.</div></div>
-          <div class="ts-row"><b>해결</b><div>
-            <div class="flow"><span class="old">기존 · Request → Spring Boot → MySQL → 추천 점수 계산 → Response</span><br><span class="new">Hit &nbsp;· Request → Redis 조회 → 추천 점수 계산 → Response</span><br><span class="new">Miss · Request → MySQL 조회 → Redis 저장(TTL 10분) → 추천 점수 계산</span></div>
-            Kafka Consumer가 크롤링 결과를 처리하며 MySQL과 Redis 후보 뉴스를 함께 갱신.
-          </div></div>
-          <div class="ts-row"><b>결과</b><div class="result-box"><ul>
-            <li>평균 조회 2.848ms → 2.238ms (21.4%↓)</li>
-            <li>동시성 100 기준 p95 36.554ms → 11.670ms (68.1%↓)</li>
-          </ul>
-          <figure style="margin-top:12px;border-radius:4px;overflow:hidden;max-width:520px"><img src="assets/projects/news-cache-bench.webp" alt="동시성별 MySQL 직접 조회 대 Redis Cache Hit p95 비교표" loading="lazy"></figure>
-          </div></div>
-          <div class="ts-row"><b>배운 점</b><div>캐시 대상은 조회 빈도와 변경 주기로 골라야 하며, Cache-Aside는 응답 시간뿐 아니라 DB 부하 완화에도 효과적이다.</div></div>
-        </div>
-      </details>
-
-      </div>
+      <a class="project-more" href="news.html">자세히 보기 →</a>
     </div>
   </article>
 </section>

@@ -27,19 +27,6 @@
     })
   );
 
-  // 프로젝트 자세히 보기 토글
-  document.querySelectorAll('.more-btn').forEach(btn => {
-    const detail = document.getElementById(btn.getAttribute('aria-controls'));
-    const label = btn.querySelector('.more-label');
-    btn.addEventListener('click', () => {
-      const open = btn.getAttribute('aria-expanded') !== 'true';
-      btn.setAttribute('aria-expanded', open);
-      detail.hidden = !open;
-      label.textContent = open ? '접기' : '자세히 보기';
-      if (!open) btn.closest('.project').scrollIntoView({ block: 'start' });
-    });
-  });
-
   // 스크롤 등장 애니메이션
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
