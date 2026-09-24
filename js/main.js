@@ -16,6 +16,7 @@
   // 모바일 메뉴
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
+  if (hamburger && mobileMenu) {
   hamburger.addEventListener('click', () => {
     const open = mobileMenu.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', open);
@@ -26,6 +27,7 @@
       hamburger.setAttribute('aria-expanded', 'false');
     })
   );
+  }
 
   // 스크롤 등장 애니메이션
   const io = new IntersectionObserver(entries => {
