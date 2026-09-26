@@ -71,7 +71,7 @@
     </figure>
     </div>
     <h3 class="subhead">사용 기술</h3>
-    <div class="tech-grid"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag">Spring Boot</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Kafka</span><span class="tech-tag">Redis</span><span class="tech-tag">MySQL</span><span class="tech-tag">JWT</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag">KR-SBERT</span><span class="tech-tag">KeyBERT</span><span class="tech-tag">Okt</span><span class="tech-tag">Hugging Face</span></div></div><div class="tech-group"><h4>Infra · Ops</h4><div class="tech-tags"><span class="tech-tag">Docker</span><span class="tech-tag">Docker Hub</span><span class="tech-tag">Prometheus</span><span class="tech-tag">Grafana</span></div></div></div>
+    <div class="tech-grid"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag">Spring Boot</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Kafka</span><span class="tech-tag">Redis</span><span class="tech-tag">MySQL</span><span class="tech-tag">JWT</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag">KR-SBERT</span><span class="tech-tag">KeyBERT</span><span class="tech-tag">Okt</span><span class="tech-tag">Hugging Face</span></div></div><div class="tech-group"><h4>Infra · Ops</h4><div class="tech-tags"><span class="tech-tag">Docker</span><span class="tech-tag">Docker Hub</span><span class="tech-tag">Nginx</span><span class="tech-tag">Liquibase</span><span class="tech-tag">Prometheus</span><span class="tech-tag">Grafana</span></div></div></div>
   </div>
 </section>
 
@@ -95,6 +95,10 @@
     <p class="body-text">추출한 키워드는 Redis ZSET에 누적해 카테고리별 실시간 키워드 랭킹으로 제공합니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>형태소 분석</strong> - Okt로 기사 본문 형태소 분석</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>필터링</strong> - 불용어·숫자·1글자 토큰 제거</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>키워드 추출</strong> - KR-SBERT 기반 KeyBERT와 MMR로 대표성과 다양성을 함께 고려</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>랭킹</strong> - Redis ZSET에 누적해 카테고리별 실시간 랭킹 제공</div></div></div>
     <div class="stat-row"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중<br>조사·어미 포함 비율</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
+    <h3 class="subhead">Liquibase 기반 DB 스키마 관리</h3>
+    <p class="body-text">DB 스키마 관리를 Liquibase로 전환해 모든 변경을 changeset 단위로 기록하고, 스키마 변경 이력을 코드와 함께 추적할 수 있도록 했습니다.</p>
+    <h3 class="subhead">Nginx Blue-Green 무중단 배포와 자동 롤백</h3>
+    <p class="body-text">Nginx 기반 Blue-Green 배포로 서비스 중단 없이 새 버전으로 전환하고, 전환 후 5xx 응답 비율을 자동으로 판정해 기준을 넘으면 이전 버전으로 롤백되도록 구성했습니다.</p>
     <h3 class="subhead">외부 AI 분석 서비스 연동 및 장애 격리</h3>
     <p class="body-text">종목 분석 데이터를 외부 AI(OpenBB) 서비스에서 받아오는 구조에서, 해당 서비스 장애가 전체 장애로 전파되지 않도록 Fallback 응답을 설계했습니다. 한글 종목명 검색 시 발생하던 URL 이중 인코딩 버그도 발견해 수정했습니다. Prometheus·Grafana로 토픽별 처리량·Consumer Lag·API 응답시간을 관측합니다.</p>
   </div>
