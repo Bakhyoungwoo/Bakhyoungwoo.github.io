@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body class="detail-page">
 
@@ -88,7 +88,7 @@
       <a href="assets/projects/marketpoke-job.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-job.webp" alt="Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리"></a>
       <figcaption class="figure-caption">Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리</figcaption>
     </figure>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">98.6%</div><div class="stat-label">분석 요청 접수 API<br>p50 응답 단축</div></div><div class="stat-box"><div class="stat-num">200.2s → 2.8s</div><div class="stat-label">동시 요청 50건<br>p50 응답 시간</div></div><div class="stat-box"><div class="stat-num">221.4s → 4.3s</div><div class="stat-label">동시 요청 50건<br>p95 응답 시간</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">90.4% → 0%</div><div class="stat-label">분석 50건 동시 부하 시<br>일반 조회 오류율 (동기 → 비동기)</div></div><div class="stat-box"><div class="stat-num">420ms</div><div class="stat-label">부하 중 일반 조회 p95<br>(부하 없음 기준 38ms)</div></div></div>
     <h3 class="subhead">LangGraph 기반 대응 전략 추천·검증 파이프라인</h3>
     <p class="body-text">매출·리뷰 분석 결과를 기반으로 대응 전략을 생성하고, 전략 실행 이후 실제 매출과 고객 반응까지 검증하는 흐름을 상태 기반 워크플로우로 구현했습니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>진단</strong> - 매출·리뷰 분석 결과로 매장 상태 진단</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>전략 추천</strong> - Contextual Bandit 기반 전략 선택 모델로 후보 전략 선정</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>RAG 근거 검색</strong> - BAAI/bge-m3로 벡터화한 공공·학술·플랫폼 자료에서 전략별 근거 검색</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>담당자 승인</strong> - 사람이 최종 승인한 전략만 실행 단계로 진행</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>리포트 생성</strong> - 검색 문서의 수치·출처만 활용해 생성하고, 생성 후 재검증해 환각 최소화</div></div><div class="flow-step"><div class="flow-num">06</div><div class="flow-text"><strong>효과 검증</strong> - SCM으로 실행 후 매출·방문객 변화를 검증</div></div></div>
@@ -113,17 +113,18 @@
     <h2 class="d-section-title">트러블 슈팅</h2>
     <article class="trouble-card">
     <div class="trouble-num">Trouble 01</div>
-    <h3 class="subhead">장시간 매출 분석으로 인한 API 응답 지연</h3>
+    <h3 class="subhead">매출 분석 부하로 인한 일반 조회 API 장애</h3>
     <div class="ts-block"><div class="ts-tag">문제</div><p class="body-text">사용자가 매출 분석을 요청하면 FastAPI가 CSV 처리, 데이터 병합, 통계 분석, AI 추론을 모두 완료한 후 결과를 반환하는 동기 처리 구조였습니다. 분석 시간이 길어질수록 HTTP 요청이 오래 유지되었고, 요청이 몰리면 일반 API 요청까지 지연되었습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">진단</div><p class="body-text">장시간 수행되는 분석 작업이 HTTP 요청 내부에서 실행되고, 분석 작업과 일반 API 요청이 동일한 실행 환경을 공유하고 있었습니다. CPU 사용량이 높은 데이터 처리와 AI 추론이 요청 처리 자원을 점유해, 분석 시간에 비례해 API 응답 시간이 증가하는 구조였습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">해결</div><div>
       <div class="flow"><span class="old">기존 · Client → FastAPI → 매출 분석 → 결과 반환</span><br><span class="new">개선 · Client → FastAPI → Redis Queue → Celery Worker → 매출 분석</span></div>
-    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>구조 개선</strong> - FastAPI는 분석 요청을 Redis Queue에 등록한 뒤 Job ID를 즉시 반환</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>Worker 분리</strong> - CSV 처리·데이터 병합·통계 계산·AI 추론은 Celery Worker가 담당하고, 요청 증가 시 API 서버와 별개로 Worker 수 조절</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>상태·실패 관리</strong> - Job API로 진행 상태와 결과를 조회하고, 60초 주기로 queued 20분·running 15분 초과 작업을 FAILED 처리</div></div></div>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>구조 개선</strong> - FastAPI는 분석 요청을 Redis Queue에 등록한 뒤 Job ID를 즉시 반환</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>Worker 분리</strong> - CSV 처리·데이터 병합·통계 계산·AI 추론은 Celery Worker가 전담하고, API 서버와 독립적으로 Worker 자원을 조정할 수 있는 구조로 분리</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>상태·실패 관리</strong> - Job API로 진행 상태와 결과를 조회하고, 60초 주기로 queued 20분·running 15분 초과 작업을 FAILED 처리</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">98.6%↓</div><div class="stat-label">p50 200.2s → 2.8s</div></div><div class="stat-box"><div class="stat-num">98.1%↓</div><div class="stat-label">p95 221.4s → 4.3s</div></div><div class="stat-box"><div class="stat-num">50건</div><div class="stat-label">동시 분석 요청<br>(로컬 Docker, 워밍업 3회 후 50회 측정)</div></div></div>
+    <div class="table-wrap"><table class="result-table"><thead><tr><th>조건</th><th>일반 조회 p95</th><th>일반 조회 p99</th><th>오류율</th></tr></thead><tbody><tr><td>분석 부하 없음</td><td>38ms</td><td>48ms</td><td>0%</td></tr><tr><td>동기 분석 50건</td><td>10,001ms</td><td>10,002ms</td><td class="bad">90.4%</td></tr><tr class="hl"><td>Celery 분석 50건</td><td>420ms</td><td>4,063ms</td><td class="good">0%</td></tr></tbody></table></div><p class="table-note">로컬 Docker Compose · FastAPI / Celery Worker 각 2 CPU·2GB · 일반 조회 constant-arrival-rate 20 req/s · 분석 50건 동시 · 워밍업 30초 후 본측정 3분, 조건별 3회</p><p class="table-note">Celery 구조에서도 오류율은 0%였지만 p99는 약 4초로 늘었습니다(Worker concurrency 2: 4,063ms · 4: 4,032ms). concurrency와 무관하게 비슷해 CPU 공유로 단정하지 않았으며, 접수 경로의 동기 I/O와 DB·Redis 공유 자원 지연 가능성을 추가 검증할 예정입니다.</p>
     </div></div>
-    <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">장시간 수행되는 AI·데이터 분석 작업은 일반 HTTP 요청과 분리해야 합니다. 비동기 시스템은 작업을 Queue에 전달하는 것만으로 완성되지 않고, 작업 상태 관리·실패 처리·정체 작업 정리까지 함께 설계해야 안정적으로 운영할 수 있다는 점을 배웠습니다.</p></div>
+    <div class="ts-block"><div class="ts-tag">추가 확인</div><p class="body-text">분석 요청 접수 API는 약 80ms(파일 저장 12.6 · DB insert 42.1 · enqueue 1.5 · task ID update 22.7ms)로, 분석 완료시간과는 별도 지표로 분리했습니다. 분석 1건 단독은 9.27초, 50건 동시에서는 큐 대기를 포함해 완료 p50 155초였고, Worker concurrency를 4로 늘리면 CPU 2개 제한에서 경합이 생겨 p50 207초로 오히려 늘었습니다.</p></div>
+    <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">Celery의 효과는 분석을 빠르게 하는 것이 아니라 무거운 작업이 일반 요청을 막지 않도록 격리하는 것이며, 성능 지표는 해결하려는 문제에서 나와야 합니다. Worker 수는 개수가 아니라 CPU 자원과 측정한 처리량을 기준으로 정해야 한다는 점을 배웠습니다.</p></div>
     </article>
   </div>
 </section>
@@ -141,6 +142,6 @@
   <p>© 2026 박형우. All rights reserved.</p>
 </footer>
 
-<script src="js/main.js?v=4"></script>
+<script src="js/main.js?v=6"></script>
 </body>
 </html>

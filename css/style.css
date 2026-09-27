@@ -406,3 +406,15 @@ html.js .reveal.in { opacity: 1; transform: none; }
 
 .video-link { display: inline-block; margin-top: 10px; font-size: .8rem; font-weight: 600; color: var(--accent); text-decoration: none; }
 .video-link:hover { text-decoration: underline; }
+
+/* ---------- RESULT TABLE ---------- */
+.table-wrap { overflow-x: auto; margin: 4px 0 6px; }
+.result-table { width: 100%; border-collapse: collapse; font-size: .86rem; min-width: 460px; }
+.result-table th { font-size: .7rem; font-weight: 600; letter-spacing: .06em; color: var(--gray-mid); text-align: left; padding: 0 12px 10px 0; border-bottom: 2px solid var(--black); }
+.result-table td { padding: 11px 12px 11px 0; border-bottom: 1px solid var(--gray-line); color: var(--gray-dark); }
+.result-table tr.hl td { color: var(--black); font-weight: 600; background: var(--accent-light); }
+.result-table tr.hl td:first-child { padding-left: 8px; }
+.result-table td.bad { color: #b3261e; font-weight: 600; }
+html.dark .result-table td.bad { color: #f28b82; }
+.result-table td.good { color: var(--accent); font-weight: 700; }
+.table-note { font-size: .74rem; color: var(--gray-mid); margin: 8px 0 14px; line-height: 1.6; }
