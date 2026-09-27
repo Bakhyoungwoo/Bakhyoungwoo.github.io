@@ -86,7 +86,7 @@
     <h3 class="subhead">LangGraph 기반 여행 코스 생성·근거 검증</h3>
     <p class="body-text">요청 분석부터 검증까지 이어지는 파이프라인을 Spring Boot - FastAPI로 연동하고, 관광지·음식점·숙소 Agent가 공통 검색 API를 사용하도록 통합했습니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>요청 분석</strong> - 사용자의 지역·기간·동행·선호 조건 파악</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>장소 검색</strong> - 관광지·음식점·숙소 Agent가 공통 Elasticsearch 검색 API 사용</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>일정 생성</strong> - 검색 결과를 바탕으로 일자별 코스 구성</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>검증</strong> - 일정 중복·시간 충돌·누락을 검증하고 기준 미달 시 재생성</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>근거 차단</strong> - 검색 결과 조건에 근거하지 않은 주장은 차단하고, 근거 부족 시 fallback 응답 반환</div></div></div>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">83.3% → 0%</div><div class="stat-label">Claim Violation Rate<br>(환각 유도 평가 60케이스)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">83.3% → 0%</div><div class="stat-label">Claim Violation Rate<br>(자체 환각 유도 평가셋 60건)</div></div></div>
     <h3 class="subhead">Prometheus·Grafana 모니터링</h3>
     <p class="body-text">Prometheus로 애플리케이션과 Kafka 메트릭을 수집하고, Grafana에서 토픽별 처리량·Consumer Lag·API 응답시간을 실시간으로 관측할 수 있는 대시보드를 구축했습니다.</p>
     <figure class="figure">

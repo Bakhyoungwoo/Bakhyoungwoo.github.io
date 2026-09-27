@@ -101,26 +101,27 @@
     <p class="section-label">Proven by Numbers</p>
     <div class="metrics reveal">
       <div class="metric">
-        <div class="metric-num">98.6<small>%</small></div>
-        <div class="metric-label">분석 요청 API 응답 단축</div>
-        <div class="metric-detail">Celery·Redis 비동기 분리<br>p50 200.2s → 2.8s · Market Poke</div>
+        <div class="metric-num">99<small> → </small>18<small>ms</small></div>
+        <div class="metric-label">장소 검색 p95 · 81.7% 단축</div>
+        <div class="metric-detail">PostgreSQL → Elasticsearch 전환<br>k6 5분 · VU 20 · 강원동행</div>
       </div>
       <div class="metric">
-        <div class="metric-num">81.7<small>%</small></div>
-        <div class="metric-label">장소 검색 p95 단축</div>
-        <div class="metric-detail">PostgreSQL → Elasticsearch<br>99.3ms → 18.2ms · 강원동행</div>
+        <div class="metric-num">37<small> → </small>12<small>ms</small></div>
+        <div class="metric-label">뉴스 조회 p95 · 68.1% 단축</div>
+        <div class="metric-detail">Redis Cache-Aside 적용<br>동시 요청 100 · 뉴스 분석 시스템</div>
       </div>
       <div class="metric">
-        <div class="metric-num">0<small>%</small></div>
-        <div class="metric-label">근거 없는 주장 비율</div>
-        <div class="metric-detail">LangGraph 근거 검증 파이프라인<br>83.3% → 0% (60 cases) · 강원동행</div>
+        <div class="metric-num">60<small> / </small>60</div>
+        <div class="metric-label">환각 유도 케이스 차단</div>
+        <div class="metric-detail">LangGraph 근거 검증 파이프라인<br>자체 평가셋 60건 · 강원동행</div>
       </div>
       <div class="metric">
-        <div class="metric-num">68.1<small>%</small></div>
-        <div class="metric-label">뉴스 조회 p95 단축</div>
-        <div class="metric-detail">Redis Cache-Aside<br>36.6ms → 11.7ms · 뉴스 분석 시스템</div>
+        <div class="metric-num">34.8<small>s</small></div>
+        <div class="metric-label">ES 장애 후 자동 재반영</div>
+        <div class="metric-detail">Kafka CDC · DLT 기반 재색인<br>ES 120초 중단 테스트 · 강원동행</div>
       </div>
     </div>
+    <p style="font-size:.74rem;color:var(--gray-mid);margin-top:18px">* 모든 수치는 로컬 Docker 환경에서 동일 조건으로 측정한 부하·장애 테스트 결과입니다.</p>
   </div>
 </div>
 
