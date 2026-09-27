@@ -7,9 +7,9 @@
   <meta name="description" content="POS·상권·외부 데이터를 기반으로 매출 변화 원인을 분석하고, AI가 대응 전략을 추천한 뒤 정책 평가와 실행 후 효과 검증까지 수행하는 매출 분석·의사결정 지원 시스템입니다.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Market Poke | 박형우">
-  <meta property="og:description" content="사용자의 불편함을 줄이고, 그 결과를 수치로 증명하는 백엔드 개발자">
-  <meta property="og:url" content="https://bakhyoungwoo.github.io/">
-  <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/projects/marketpoke-arch.webp">
+  <meta property="og:description" content="장시간 AI 분석 작업을 Celery Worker로 격리하고, Job 상태 관리와 장애 처리를 설계한 매출 분석 플랫폼">
+  <meta property="og:url" content="https://bakhyoungwoo.github.io/marketpoke.html">
+  <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/og/marketpoke.jpg">
   <script>
     document.documentElement.classList.add('js');
     try {
@@ -91,7 +91,7 @@
     </figure>
     <div class="stat-row"><div class="stat-box"><div class="stat-num">90.4% → 0%</div><div class="stat-label">분석 50건 동시 부하 시<br>일반 조회 오류율 (동기 → 비동기)</div></div><div class="stat-box"><div class="stat-num">420ms</div><div class="stat-label">부하 중 일반 조회 p95<br>(부하 없음 기준 38ms)</div></div></div>
     <h3 class="subhead">LangGraph 기반 대응 전략 추천·검증 파이프라인</h3>
-    <p class="body-text">매출·리뷰 분석 결과를 기반으로 대응 전략을 생성하고, 전략 실행 이후 실제 매출과 고객 반응까지 검증하는 흐름을 상태 기반 워크플로우로 구현했습니다.</p>
+    <p class="body-text">매출·리뷰 분석 결과를 기반으로 대응 전략을 생성하고, 전략 실행 이후 실제 매출과 고객 반응까지 검증하는 흐름을 상태 기반 워크플로우로 직접 설계·구현했습니다. Contextual Bandit 전략 선택 모델, RAG 근거 검색, SCM 효과 검증까지 파이프라인 전 단계를 담당했습니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>진단</strong> - 매출·리뷰 분석 결과로 매장 상태 진단</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>전략 추천</strong> - Contextual Bandit 기반 전략 선택 모델로 후보 전략 선정</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>RAG 근거 검색</strong> - BAAI/bge-m3로 벡터화한 공공·학술·플랫폼 자료에서 전략별 근거 검색</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>담당자 승인</strong> - 사람이 최종 승인한 전략만 실행 단계로 진행</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>리포트 생성</strong> - 검색 문서의 수치·출처만 활용해 생성하고, 생성 후 재검증해 환각 최소화</div></div><div class="flow-step"><div class="flow-num">06</div><div class="flow-text"><strong>효과 검증</strong> - SCM으로 실행 후 매출·방문객 변화를 검증</div></div></div>
     <figure class="figure">
       <a href="assets/projects/marketpoke-langgraph.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-langgraph.webp" alt="LangGraph 전략 추천·승인·검증 워크플로우"></a>

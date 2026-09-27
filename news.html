@@ -7,9 +7,9 @@
   <meta name="description" content="실시간으로 수집한 뉴스와 금융 데이터를 AI로 분석해 사용자 맞춤형 뉴스와 종목 정보를 제공하는 AI 금융·뉴스 플랫폼입니다.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="AI 뉴스 분석 시스템 | 박형우">
-  <meta property="og:description" content="사용자의 불편함을 줄이고, 그 결과를 수치로 증명하는 백엔드 개발자">
-  <meta property="og:url" content="https://bakhyoungwoo.github.io/">
-  <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/projects/marketpoke-arch.webp">
+  <meta property="og:description" content="Kafka 비동기 수집과 Redis 캐싱으로 수집 실패와 조회 지연을 해결한 1인 개발 뉴스 추천 플랫폼">
+  <meta property="og:url" content="https://bakhyoungwoo.github.io/news.html">
+  <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/og/news.jpg">
   <script>
     document.documentElement.classList.add('js');
     try {
@@ -91,7 +91,7 @@
     <h3 class="subhead">Redis 기반 개인화 뉴스 추천</h3>
     <p class="body-text">클릭한 뉴스의 키워드를 Redis ZSET에 누적해 사용자 관심도를 관리하고, 기사 키워드와 비교해 개인화 추천을 제공합니다. 신규 사용자를 위한 Cold Start fallback과 JWT 인증·북마크 API도 구현했습니다.</p>
     <h3 class="subhead">AI 기반 뉴스 키워드 추출</h3>
-    <p class="body-text">추출한 키워드는 Redis ZSET에 누적해 카테고리별 실시간 키워드 랭킹으로 제공합니다.</p>
+    <p class="body-text">기사별 순차 처리를 카테고리 단위 배치 처리와 SBERT 임베딩 일괄 계산으로 바꿔 처리 시간을 줄였고, 추출한 키워드는 Redis ZSET에 누적해 카테고리별 실시간 키워드 랭킹으로 제공합니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>형태소 분석</strong> - Okt로 기사 본문 형태소 분석</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>필터링</strong> - 불용어·숫자·1글자 토큰 제거</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>키워드 추출</strong> - KR-SBERT 기반 KeyBERT와 MMR로 대표성과 다양성을 함께 고려</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>랭킹</strong> - Redis ZSET에 누적해 카테고리별 실시간 랭킹 제공</div></div></div>
     <div class="stat-row"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중 조사·어미 포함 비율<br>(30개 키워드 기준)</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
     <h3 class="subhead">Liquibase 기반 DB 스키마 관리</h3>

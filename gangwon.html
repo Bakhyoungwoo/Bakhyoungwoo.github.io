@@ -7,9 +7,9 @@
   <meta name="description" content="사용자의 여행 조건과 선호를 분석해 관광지·음식점·숙소를 검색하고, AI가 개인 맞춤형 강원도 여행 코스를 생성·검증하는 여행 의사결정 지원 서비스입니다.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="강원동행 | 박형우">
-  <meta property="og:description" content="사용자의 불편함을 줄이고, 그 결과를 수치로 증명하는 백엔드 개발자">
-  <meta property="og:url" content="https://bakhyoungwoo.github.io/">
-  <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/projects/marketpoke-arch.webp">
+  <meta property="og:description" content="Elasticsearch 통합 검색과 Kafka CDC 동기화로 검색 성능과 데이터 정합성을 확보한 여행 코스 추천 서비스">
+  <meta property="og:url" content="https://bakhyoungwoo.github.io/gangwon.html">
+  <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/og/gangwon.jpg">
   <script>
     document.documentElement.classList.add('js');
     try {
@@ -83,7 +83,7 @@
       <a href="assets/projects/gangwon-cdc.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-cdc.webp" alt="PostgreSQL WAL → Debezium → Kafka Topic → Spring Consumer → Elasticsearch"></a>
       <figcaption class="figure-caption">PostgreSQL WAL → Debezium → Kafka Topic → Spring Consumer → Elasticsearch</figcaption>
     </figure>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">34.8초</div><div class="stat-label">ES 120초 장애 후<br>자동 재반영까지</div></div><div class="stat-box"><div class="stat-num">1,054ms</div><div class="stat-label">DB 변경 → 검색 반영<br>p95 (30회 반복)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">34.8초</div><div class="stat-label">재시도 한도(약 61초)를 넘는<br>ES 120초 장애에서도 DLT 재색인으로 반영</div></div><div class="stat-box"><div class="stat-num">1,054ms</div><div class="stat-label">DB 변경 → 검색 반영<br>p95 (30회 반복)</div></div></div>
     <h3 class="subhead">LangGraph 기반 여행 코스 생성·근거 검증</h3>
     <p class="body-text">요청 분석부터 검증까지 이어지는 파이프라인을 Spring Boot - FastAPI로 연동하고, 관광지·음식점·숙소 Agent가 공통 검색 API를 사용하도록 통합했습니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>요청 분석</strong> - 사용자의 지역·기간·동행·선호 조건 파악</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>장소 검색</strong> - 관광지·음식점·숙소 Agent가 공통 Elasticsearch 검색 API 사용</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>일정 생성</strong> - 검색 결과를 바탕으로 일자별 코스 구성</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>검증</strong> - 일정 중복·시간 충돌·누락을 검증하고 기준 미달 시 재생성</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>근거 차단</strong> - 검색 결과 조건에 근거하지 않은 주장은 차단하고, 근거 부족 시 fallback 응답 반환</div></div></div>
@@ -110,7 +110,7 @@
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>검색 구조 개선</strong> - 검색 부하를 트랜잭션 DB에서 분리하기 위해 Elasticsearch 기반으로 전환하고, 복합 조건을 지원하는 통합 검색 API 구현</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>CDC 파이프라인 구축</strong> - PostgreSQL을 원본으로 유지하고 Debezium이 변경 사항을 Kafka로 전달, Spring Kafka Consumer가 인덱스를 생성·수정·삭제하고 일시적 실패는 Retry Topic으로 재처리</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>장애 복구 검증 및 개선</strong> - ES를 약 20초 중지하고 DB를 수정하자 복구 후에도 미반영. 재시도 시간(약 7초)이 장애 시간보다 짧아 이벤트가 DLT로 이동했고, DLT가 로그만 남긴 것이 원인. 재시도를 지수 backoff로 약 61초까지 늘리고, DLT 이벤트는 장소 ID만 기록해 스케줄러가 PostgreSQL 최신값으로 재색인하도록 변경해 순서 역전도 방지</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">99.3 → 18.2ms</div><div class="stat-label">검색 API p95 (-81.7%)</div></div><div class="stat-box"><div class="stat-num">148.5 → 26.6ms</div><div class="stat-label">검색 API p99 (-82.1%)</div></div><div class="stat-box"><div class="stat-num">30 / 30</div><div class="stat-label">DB 변경 → 검색 반영<br>전건 반영 (p95 1,054ms)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">99.3 → 18.2ms</div><div class="stat-label">검색 API p95 (-81.7%)</div></div><div class="stat-box"><div class="stat-num">148.5 → 26.6ms</div><div class="stat-label">검색 API p99 (-82.1%)</div></div><div class="stat-box"><div class="stat-num">30 / 30</div><div class="stat-label">DB 변경 → 검색 반영<br>전건 반영 (p95 1,054ms)</div></div><div class="stat-box"><div class="stat-num">34.8초</div><div class="stat-label">재시도 한도를 넘는 ES 120초 장애 후<br>DLT 재색인으로 자동 재반영</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">검색 성능 문제는 쿼리 최적화만으로 해결하기보다 트랜잭션 처리와 검색 기능을 분리하고, 각 목적에 맞는 저장소를 선택해야 한다는 점을 배웠습니다. 또한 성능뿐 아니라 데이터 동기화, 장애 발생 시 재처리, 운영 모니터링까지 함께 설계해야 함을 경험했습니다.</p></div>
     </article>

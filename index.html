@@ -9,7 +9,7 @@
   <meta property="og:title" content="박형우 | Backend Developer">
   <meta property="og:description" content="사용자의 불편함을 줄이고, 그 결과를 수치로 증명하는 백엔드 개발자">
   <meta property="og:url" content="https://bakhyoungwoo.github.io/">
-  <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/projects/marketpoke-arch.webp">
+  <meta property="og:image" content="https://bakhyoungwoo.github.io/assets/og/marketpoke.jpg">
   <script>
     document.documentElement.classList.add('js');
     try {
@@ -101,24 +101,24 @@
     <p class="section-label">Proven by Numbers</p>
     <div class="metrics reveal">
       <div class="metric">
+        <div class="metric-num">90.4<small>% → </small>0<small>%</small></div>
+        <div class="metric-label">분석 부하 중 일반 조회 오류율</div>
+        <div class="metric-detail">Celery·Redis로 분석 작업 격리<br>분석 50건 동시 · Market Poke</div>
+      </div>
+      <div class="metric">
         <div class="metric-num">99.3<small> → </small>18.2<small>ms</small></div>
         <div class="metric-label">검색 API p95 (-81.7%)</div>
         <div class="metric-detail">처리량 116.9 → 140.0 req/s (+19.8%)<br>k6 · VU 20 · 5분 · 강원동행</div>
       </div>
       <div class="metric">
-        <div class="metric-num">37<small> → </small>12<small>ms</small></div>
-        <div class="metric-label">뉴스 조회 p95 · 68.1% 단축</div>
-        <div class="metric-detail">Redis Cache-Aside 적용<br>동시 요청 100 · 뉴스 분석 시스템</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">60<small> / </small>60</div>
-        <div class="metric-label">환각 유도 케이스 차단</div>
-        <div class="metric-detail">LangGraph 근거 검증 파이프라인<br>자체 평가셋 60건 · 강원동행</div>
-      </div>
-      <div class="metric">
         <div class="metric-num">34.8<small>s</small></div>
-        <div class="metric-label">ES 장애 후 자동 재반영</div>
-        <div class="metric-detail">Kafka CDC · DLT 기반 재색인<br>ES 120초 중단 테스트 · 강원동행</div>
+        <div class="metric-label">ES 120초 장애 후 자동 재반영</div>
+        <div class="metric-detail">재시도 한도(약 61초)를 넘는 장애도<br>DLT 기반 재색인으로 복구 · 강원동행</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">48.4<small>s → </small>1.5<small>s</small></div>
+        <div class="metric-label">키워드 추출 처리 시간 (-97.0%)</div>
+        <div class="metric-detail">기사별 순차 → 카테고리 배치·임베딩 일괄<br>3회 평균 · 뉴스 분석 시스템</div>
       </div>
     </div>
     <p style="font-size:.74rem;color:var(--gray-mid);margin-top:18px">* 모든 수치는 로컬 Docker 환경에서 동일 조건으로 측정한 부하·장애 테스트 결과입니다.</p>
