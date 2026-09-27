@@ -54,10 +54,10 @@
     <h3 class="subhead">주요 기능</h3>
     <div class="feats"><div class="feat-col"><h4>사용자 기능</h4><ul><li>관심 카테고리별 최신 뉴스 조회</li><li>뉴스 클릭 이력 기반 개인 맞춤형 뉴스 추천</li><li>카테고리별 주요 키워드 확인</li><li>주요 시장 지수 및 종목 정보 조회</li><li>종목 검색, 주가 차트·재무정보·관련 뉴스 확인</li><li>기간별 주식 데이터 기반 AI 분석 결과 확인</li></ul></div></div>
     <h3 class="subhead">전체 아키텍처</h3>
-    <p class="body-text">Spring Boot가 API와 비즈니스 로직을, FastAPI가 크롤링과 AI 분석을 담당하며 두 서버는 Kafka로 연결됩니다. MySQL에 뉴스와 사용자 데이터를 저장하고, Redis로 추천 후보 캐싱과 키워드 랭킹을 관리합니다. 전체 서비스는 Docker로 구성하고 GitHub·Docker Hub 기반으로 배포합니다.</p>
+    <p class="body-text">GitHub에 push하면 GitHub Actions가 이미지를 빌드해 Docker Hub에 올리고, AWS EC2가 이미지를 pull해 Docker Compose로 전체 서비스를 실행합니다. Nginx가 요청을 받아 Spring Boot Blue·Green 중 활성 버전으로 전달하는 Blue-Green 구조로 무중단 배포하며, Spring Boot는 MySQL·Redis·Kafka와 연동하고 FastAPI는 크롤링과 AI 분석을 맡아 OpenAI·OpenBB·yfinance 등 외부 API를 호출합니다.</p>
     <figure class="figure">
-      <a href="assets/projects/news-arch.webp" target="_blank" rel="noopener"><img src="assets/projects/news-arch.webp" alt="AI 뉴스 분석 시스템 아키텍처 - Spring Boot · FastAPI · Kafka · MySQL · Redis"></a>
-      <figcaption class="figure-caption">AI 뉴스 분석 시스템 아키텍처 - Spring Boot · FastAPI · Kafka · MySQL · Redis</figcaption>
+      <a href="assets/projects/news-arch-v2.webp" target="_blank" rel="noopener"><img src="assets/projects/news-arch-v2.webp" alt="AI 뉴스 분석 시스템 아키텍처 - AWS EC2 · Docker Compose · Nginx Blue-Green · GitHub Actions → Docker Hub"></a>
+      <figcaption class="figure-caption">AI 뉴스 분석 시스템 아키텍처 - AWS EC2 · Docker Compose · Nginx Blue-Green · GitHub Actions → Docker Hub</figcaption>
     </figure>
     <h3 class="subhead">서비스 화면</h3>
     <div class="figure-pair">
@@ -71,7 +71,7 @@
     </figure>
     </div>
     <h3 class="subhead">사용 기술</h3>
-    <div class="tech-grid"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag">Spring Boot</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Kafka</span><span class="tech-tag">Redis</span><span class="tech-tag">MySQL</span><span class="tech-tag">JWT</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag">KR-SBERT</span><span class="tech-tag">KeyBERT</span><span class="tech-tag">Okt</span><span class="tech-tag">Hugging Face</span></div></div><div class="tech-group"><h4>Infra · Ops</h4><div class="tech-tags"><span class="tech-tag">Docker</span><span class="tech-tag">Docker Hub</span><span class="tech-tag">Nginx</span><span class="tech-tag">Liquibase</span><span class="tech-tag">Prometheus</span><span class="tech-tag">Grafana</span></div></div></div>
+    <div class="tech-grid"><div class="tech-group"><h4>Backend</h4><div class="tech-tags"><span class="tech-tag">Spring Boot</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Kafka</span><span class="tech-tag">Redis</span><span class="tech-tag">MySQL</span><span class="tech-tag">JWT</span></div></div><div class="tech-group"><h4>AI</h4><div class="tech-tags"><span class="tech-tag">KR-SBERT</span><span class="tech-tag">KeyBERT</span><span class="tech-tag">Okt</span><span class="tech-tag">Hugging Face</span></div></div><div class="tech-group"><h4>Infra · Ops</h4><div class="tech-tags"><span class="tech-tag">AWS EC2</span><span class="tech-tag">Docker</span><span class="tech-tag">Docker Hub</span><span class="tech-tag">GitHub Actions</span><span class="tech-tag">Nginx</span><span class="tech-tag">Liquibase</span><span class="tech-tag">Prometheus</span><span class="tech-tag">Grafana</span></div></div></div>
   </div>
 </section>
 
