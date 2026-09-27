@@ -75,7 +75,7 @@
     <h2 class="d-section-title">핵심 기여</h2>
     <h3 class="subhead">Elasticsearch 기반 여행지 통합 검색</h3>
     <p class="body-text">초기 PostgreSQL 기반 검색 구조에서 반복적인 복합 조건 조회로 병목이 발생했습니다. 검색 기능을 Elasticsearch로 분리하고 관광지·음식점·숙소 데이터를 통합 색인한 뒤, 전문 검색과 필터링을 활용한 복합 조건 검색 API를 구현했습니다.</p>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">81.7%↓</div><div class="stat-label">검색 API p95<br>99.3ms → 18.2ms</div></div><div class="stat-box"><div class="stat-num">82.1%↓</div><div class="stat-label">검색 API p99<br>148.5ms → 26.6ms</div></div><div class="stat-box"><div class="stat-num">19.8%↑</div><div class="stat-label">처리량<br>116.9 → 140.0 req/s</div></div><div class="stat-box"><div class="stat-num">0%</div><div class="stat-label">오류율<br>(k6 5분, VU 20)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">19.8%↑</div><div class="stat-label">처리량 116.9 → 140.0 req/s<br>(k6 5분, VU 20)</div></div></div>
     <h3 class="subhead">Kafka·Debezium 기반 CDC 파이프라인</h3>
     <p class="body-text">Debezium이 PostgreSQL 변경 사항을 Kafka 이벤트로 전달하면 Consumer가 Elasticsearch 인덱스에 자동 반영하도록 구성해 애플리케이션의 이중 쓰기를 제거했습니다. 지수 backoff 재시도와 DLT 기반 재색인으로 ES 장애 복구 후에도 최신 데이터가 자동 반영됩니다.</p>
     <figure class="figure">

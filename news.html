@@ -85,16 +85,14 @@
       <a href="assets/projects/news-sequence.webp" target="_blank" rel="noopener"><img src="assets/projects/news-sequence.webp" alt="크롤링 시퀀스 다이어그램 - Redis 잠금으로 카테고리별 중복 크롤링 방지"></a>
       <figcaption class="figure-caption">크롤링 시퀀스 다이어그램 - Redis 잠금으로 카테고리별 중복 크롤링 방지</figcaption>
     </figure>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">3.5ms</div><div class="stat-label">수집 요청 접수 API<br>평균 응답</div></div><div class="stat-box"><div class="stat-num">8ms</div><div class="stat-label">수집 요청 접수 API<br>p95 응답</div></div><div class="stat-box"><div class="stat-num">0건</div><div class="stat-label">Timeout 실패</div></div></div>
     <h3 class="subhead">Redis Cache-Aside 기반 뉴스 조회 캐싱</h3>
     <p class="body-text">여러 사용자가 공통으로 조회하는 카테고리별 추천 후보 뉴스를 요청마다 MySQL에서 반복 조회해 불필요한 DB 부하가 쌓이는 구조였습니다. Redis에 우선 캐싱하고 캐시 미스 시에만 MySQL을 조회해 채우는 Cache-Aside 패턴을 적용하고, 오래된 데이터 방지를 위해 10분 TTL을 설정했습니다.</p>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">68.1%↓</div><div class="stat-label">동시 요청 100건<br>조회 p95 36.6ms → 11.7ms</div></div></div>
     <h3 class="subhead">Redis 기반 개인화 뉴스 추천</h3>
     <p class="body-text">클릭한 뉴스의 키워드를 Redis ZSET에 누적해 사용자 관심도를 관리하고, 기사 키워드와 비교해 개인화 추천을 제공합니다. 신규 사용자를 위한 Cold Start fallback과 JWT 인증·북마크 API도 구현했습니다.</p>
     <h3 class="subhead">AI 기반 뉴스 키워드 추출</h3>
     <p class="body-text">추출한 키워드는 Redis ZSET에 누적해 카테고리별 실시간 키워드 랭킹으로 제공합니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>형태소 분석</strong> - Okt로 기사 본문 형태소 분석</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>필터링</strong> - 불용어·숫자·1글자 토큰 제거</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>키워드 추출</strong> - KR-SBERT 기반 KeyBERT와 MMR로 대표성과 다양성을 함께 고려</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>랭킹</strong> - Redis ZSET에 누적해 카테고리별 실시간 랭킹 제공</div></div></div>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중<br>조사·어미 포함 비율</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중 조사·어미 포함 비율<br>(30개 키워드 기준)</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
     <h3 class="subhead">Liquibase 기반 DB 스키마 관리</h3>
     <p class="body-text">DB 스키마 관리를 Liquibase로 전환해 모든 변경을 changeset 단위로 기록하고, 스키마 변경 이력을 코드와 함께 추적할 수 있도록 했습니다.</p>
     <h3 class="subhead">Nginx Blue-Green 무중단 배포와 자동 롤백</h3>
@@ -132,7 +130,7 @@
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>Cache-Aside 적용</strong> - API 요청 시 Redis를 먼저 조회하고, 캐시가 없거나 만료된 경우에만 MySQL 조회 후 Redis에 저장</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>캐시 갱신 연동</strong> - 1번 트러블 슈팅의 Kafka Consumer가 크롤링 결과를 처리하면서 MySQL과 Redis의 추천 후보를 함께 갱신</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">21.4%↓</div><div class="stat-label">평균 조회 시간<br>2.848ms → 2.238ms</div></div><div class="stat-box"><div class="stat-num">68.1%↓</div><div class="stat-label">동시성 100 p95<br>36.554ms → 11.670ms</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">21.4%↓</div><div class="stat-label">단건 평균 조회<br>2.85ms → 2.24ms</div></div><div class="stat-box"><div class="stat-num">68.1%↓</div><div class="stat-label">동시 100건 p95 36.6ms → 11.7ms<br>(반복 쿼리 부하 해소)</div></div></div>
     <figure class="figure">
       <a href="assets/projects/news-cache-bench.webp" target="_blank" rel="noopener"><img src="assets/projects/news-cache-bench.webp" alt="동시성별 MySQL 직접 조회 vs Redis Cache Hit p95"></a>
       <figcaption class="figure-caption">동시성별 MySQL 직접 조회 vs Redis Cache Hit p95</figcaption>
