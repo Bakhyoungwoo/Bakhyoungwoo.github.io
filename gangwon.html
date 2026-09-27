@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body class="detail-page">
 
@@ -40,6 +40,7 @@
 <header id="hero" class="page-section detail-section d-hero">
   <div class="d-eyebrow">Team Project · 2026.05 – 2026.08</div>
   <h1 class="d-title">강원동행 <small>Gangwon Companion</small></h1>
+  <p class="d-lead">Elasticsearch 통합 검색과 Kafka CDC 동기화로 검색 성능과 데이터 정합성을 확보한 여행 코스 추천 서비스</p>
   <p class="d-sub">사용자의 여행 조건과 선호를 분석해 관광지·음식점·숙소를 검색하고, AI가 개인 맞춤형 강원도 여행 코스를 생성·검증하는 여행 의사결정 지원 서비스입니다.</p>
   <p class="d-meta">2026 관광데이터 활용 공모전 웹·앱 개발 부문 (3인) · 기여도 40%</p>
   <div class="d-actions"><a href="https://github.com/Gangwon-Companion" class="primary" target="_blank" rel="noopener">↗ GitHub</a></div>
@@ -75,7 +76,7 @@
     <h2 class="d-section-title">핵심 기여</h2>
     <h3 class="subhead">Elasticsearch 기반 여행지 통합 검색</h3>
     <p class="body-text">초기 PostgreSQL 기반 검색 구조에서 반복적인 복합 조건 조회로 병목이 발생했습니다. 검색 기능을 Elasticsearch로 분리하고 관광지·음식점·숙소 데이터를 통합 색인한 뒤, 전문 검색과 필터링을 활용한 복합 조건 검색 API를 구현했습니다.</p>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">19.8%↑</div><div class="stat-label">처리량 116.9 → 140.0 req/s<br>(k6 5분, VU 20)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">99.3 → 18.2ms</div><div class="stat-label">검색 API p95 (-81.7%)<br>k6 · VU 20 · 5분</div></div><div class="stat-box"><div class="stat-num">116.9 → 140.0 req/s</div><div class="stat-label">처리량 (+19.8%)<br>k6 · VU 20 · 5분</div></div></div>
     <h3 class="subhead">Kafka·Debezium 기반 CDC 파이프라인</h3>
     <p class="body-text">Debezium이 PostgreSQL 변경 사항을 Kafka 이벤트로 전달하면 Consumer가 Elasticsearch 인덱스에 자동 반영하도록 구성해 애플리케이션의 이중 쓰기를 제거했습니다. 지수 backoff 재시도와 DLT 기반 재색인으로 ES 장애 복구 후에도 최신 데이터가 자동 반영됩니다.</p>
     <figure class="figure">
@@ -109,7 +110,7 @@
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>검색 구조 개선</strong> - 검색 부하를 트랜잭션 DB에서 분리하기 위해 Elasticsearch 기반으로 전환하고, 복합 조건을 지원하는 통합 검색 API 구현</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>CDC 파이프라인 구축</strong> - PostgreSQL을 원본으로 유지하고 Debezium이 변경 사항을 Kafka로 전달, Spring Kafka Consumer가 인덱스를 생성·수정·삭제하고 일시적 실패는 Retry Topic으로 재처리</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>장애 복구 검증 및 개선</strong> - ES를 약 20초 중지하고 DB를 수정하자 복구 후에도 미반영. 재시도 시간(약 7초)이 장애 시간보다 짧아 이벤트가 DLT로 이동했고, DLT가 로그만 남긴 것이 원인. 재시도를 지수 backoff로 약 61초까지 늘리고, DLT 이벤트는 장소 ID만 기록해 스케줄러가 PostgreSQL 최신값으로 재색인하도록 변경해 순서 역전도 방지</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">81.7%↓</div><div class="stat-label">검색 p95 99.3ms → 18.2ms</div></div><div class="stat-box"><div class="stat-num">82.1%↓</div><div class="stat-label">검색 p99 148.5ms → 26.6ms</div></div><div class="stat-box"><div class="stat-num">30 / 30</div><div class="stat-label">DB 변경 → 검색 반영<br>전건 반영 (p95 1,054ms)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">99.3 → 18.2ms</div><div class="stat-label">검색 API p95 (-81.7%)</div></div><div class="stat-box"><div class="stat-num">148.5 → 26.6ms</div><div class="stat-label">검색 API p99 (-82.1%)</div></div><div class="stat-box"><div class="stat-num">30 / 30</div><div class="stat-label">DB 변경 → 검색 반영<br>전건 반영 (p95 1,054ms)</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">검색 성능 문제는 쿼리 최적화만으로 해결하기보다 트랜잭션 처리와 검색 기능을 분리하고, 각 목적에 맞는 저장소를 선택해야 한다는 점을 배웠습니다. 또한 성능뿐 아니라 데이터 동기화, 장애 발생 시 재처리, 운영 모니터링까지 함께 설계해야 함을 경험했습니다.</p></div>
     </article>
@@ -129,6 +130,6 @@
   <p>© 2026 박형우. All rights reserved.</p>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

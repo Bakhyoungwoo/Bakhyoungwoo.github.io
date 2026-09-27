@@ -418,3 +418,8 @@ html.js .reveal.in { opacity: 1; transform: none; }
 html.dark .result-table td.bad { color: #f28b82; }
 .result-table td.good { color: var(--accent); font-weight: 700; }
 .table-note { font-size: .74rem; color: var(--gray-mid); margin: 8px 0 14px; line-height: 1.6; }
+
+/* ---------- PROJECT LEAD ---------- */
+.project-lead { font-size: .98rem; font-weight: 600; color: var(--black); line-height: 1.6; margin-top: 10px; max-width: 760px; }
+.project-lead + .project-period { margin-top: 6px; }
+.d-lead { font-size: 1.12rem; font-weight: 600; color: var(--accent); line-height: 1.6; max-width: 720px; margin-bottom: 10px; }

@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -101,9 +101,9 @@
     <p class="section-label">Proven by Numbers</p>
     <div class="metrics reveal">
       <div class="metric">
-        <div class="metric-num">99<small> → </small>18<small>ms</small></div>
-        <div class="metric-label">장소 검색 p95 · 81.7% 단축</div>
-        <div class="metric-detail">PostgreSQL → Elasticsearch 전환<br>k6 5분 · VU 20 · 강원동행</div>
+        <div class="metric-num">99.3<small> → </small>18.2<small>ms</small></div>
+        <div class="metric-label">검색 API p95 (-81.7%)</div>
+        <div class="metric-detail">처리량 116.9 → 140.0 req/s (+19.8%)<br>k6 · VU 20 · 5분 · 강원동행</div>
       </div>
       <div class="metric">
         <div class="metric-num">37<small> → </small>12<small>ms</small></div>
@@ -184,6 +184,7 @@
         <h3 class="project-name"><a href="marketpoke.html">Market Poke</a></h3>
         <span class="badge gold">KT AIVLE Collaboration상</span>
       </div>
+      <p class="project-lead">장시간 AI 분석 작업을 Celery Worker로 격리하고, Job 상태 관리와 장애 처리를 설계한 매출 분석 플랫폼</p>
       <p class="project-period">KT AIVLE School 9기 AI 개발자 트랙 빅프로젝트 (6인 · 팀장) · 2026.06 – 2026.08</p>
       <p class="project-desc">POS·상권·외부 데이터를 기반으로 매출 변화 원인을 분석하고, AI가 대응 전략을 추천한 뒤 정책 평가와 실행 후 효과 검증까지 수행하는 매출 분석·의사결정 지원 시스템입니다.</p>
       <div class="project-stack tags compact">
@@ -201,6 +202,7 @@
         <h3 class="project-name"><a href="gangwon.html">강원동행</a></h3>
         
       </div>
+      <p class="project-lead">Elasticsearch 통합 검색과 Kafka CDC 동기화로 검색 성능과 데이터 정합성을 확보한 여행 코스 추천 서비스</p>
       <p class="project-period">2026 관광데이터 활용 공모전 웹·앱 개발 부문 (3인) · 2026.05 – 2026.08</p>
       <p class="project-desc">사용자의 여행 조건과 선호를 분석해 관광지·음식점·숙소를 검색하고, AI가 개인 맞춤형 강원도 여행 코스를 생성·검증하는 여행 의사결정 지원 서비스입니다. Elasticsearch 기반 검색과 CDC 파이프라인으로 검색엔진을 구축하고, RAG를 이용해 사용자 맞춤 여행 코스를 추천합니다.</p>
       <div class="project-stack tags compact">
@@ -218,6 +220,7 @@
         <h3 class="project-name"><a href="news.html">AI 뉴스 분석 시스템</a></h3>
         <span class="badge accent">1인 개발</span>
       </div>
+      <p class="project-lead">Kafka 비동기 수집과 Redis 캐싱으로 수집 실패와 조회 지연을 해결한 1인 개발 뉴스 추천 플랫폼</p>
       <p class="project-period">충북대학교 컴퓨터공학과 개인 프로젝트 (1인) · 2025.12 – 2026.08</p>
       <p class="project-desc">실시간으로 수집한 뉴스와 금융 데이터를 AI로 분석해 사용자 맞춤형 뉴스와 종목 정보를 제공하는 AI 금융·뉴스 플랫폼입니다. 뉴스 크롤링, 키워드 추출, 사용자 관심사 및 클릭 이력 분석을 통해 개인화된 뉴스를 추천하고, 주식 시세·재무정보·관련 뉴스와 AI 기반 종목 분석 기능을 제공합니다. 또한 Redis, Kafka를 활용해 실시간 데이터 처리와 빠른 검색·추천 서비스를 구현했습니다.</p>
       <div class="project-stack tags compact">
@@ -320,6 +323,6 @@
   <p>© 2026 박형우. All rights reserved.</p>
 </footer>
 
-<script src="js/main.js?v=6"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>
