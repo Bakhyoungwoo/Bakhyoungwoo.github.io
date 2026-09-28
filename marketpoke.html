@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Market Poke | 박형우 포트폴리오</title>
-  <meta name="description" content="POS·상권·외부 데이터를 기반으로 매출 변화 원인을 분석하고, AI가 대응 전략을 추천한 뒤 정책 평가와 실행 후 효과 검증까지 수행하는 매출 분석·의사결정 지원 시스템입니다.">
+  <meta name="description" content="POS·상권·외부 데이터를 기반으로 매출 변화 원인을 분석하고, AI가 대응 전략을 추천한 뒤 정책 평가와 실행 후 효과 추정까지 수행하는 매출 분석·의사결정 지원 시스템입니다.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Market Poke | 박형우">
   <meta property="og:description" content="장시간 AI 분석 작업을 Celery Worker로 격리하고, Job 상태 관리와 장애 처리를 설계한 매출 분석 플랫폼">
@@ -41,7 +41,7 @@
   <div class="d-eyebrow">Team Project · 2026.06 – 2026.08</div>
   <h1 class="d-title">Market Poke <small>마켓포케</small></h1>
   <p class="d-lead">장시간 AI 분석 작업을 Celery Worker로 격리하고, Job 상태 관리와 장애 처리를 설계한 매출 분석 플랫폼</p>
-  <p class="d-sub">POS·상권·외부 데이터를 기반으로 매출 변화 원인을 분석하고, AI가 대응 전략을 추천한 뒤 정책 평가와 실행 후 효과 검증까지 수행하는 매출 분석·의사결정 지원 시스템입니다.</p>
+  <p class="d-sub">POS·상권·외부 데이터를 기반으로 매출 변화 원인을 분석하고, AI가 대응 전략을 추천한 뒤 정책 평가와 실행 후 효과 추정까지 수행하는 매출 분석·의사결정 지원 시스템입니다.</p>
   <p class="d-meta">KT AIVLE School 9기 AI 개발자 트랙 빅프로젝트 (6인) · 팀장 · 기여도 30%<br><strong>KT AIVLE School Big Project Collaboration상</strong></p>
   <div class="d-actions"><a href="#demo" class="primary">▶ 시연 영상 보기</a><a href="https://github.com/AIVLE-07-20-big-project" target="_blank" rel="noopener">↗ GitHub</a></div>
 </header>
@@ -60,7 +60,7 @@
     <div class="section-label">Project</div>
     <h2 class="d-section-title">프로젝트 소개</h2>
     <h3 class="subhead">주제</h3>
-    <p class="body-text">POS·상권·기상·유동인구·행사 데이터를 결합해 매장의 매출 변화 원인을 분석하고, AI가 대응 전략을 추천합니다. 추천된 전략은 담당자 승인을 거쳐 실행되며, 실행 이후 실제 매출과 고객 반응까지 검증하는 흐름으로 설계했습니다.</p>
+    <p class="body-text">POS·상권·기상·유동인구·행사 데이터를 결합해 매장의 매출 변화 원인을 분석하고, AI가 대응 전략을 추천합니다. 추천된 전략은 담당자 승인을 거쳐 실행되며, 실행 이후 실제 매출과 고객 반응 변화까지 추정하는 흐름으로 설계했습니다.</p>
     <h3 class="subhead">주요 기능</h3>
     <div class="feats"><div class="feat-col"><h4>사용자 기능</h4><ul><li>가계부 및 발주 관리</li><li>매장별 맞춤 전략 추천</li><li>O2O 매장 및 커머스</li><li>리뷰 분석</li></ul></div><div class="feat-col"><h4>관리자 기능</h4><ul><li>신규 가맹점 영업 타겟 추천</li><li>관리자 게시판</li></ul></div></div>
     <h3 class="subhead">전체 아키텍처</h3>
@@ -89,10 +89,10 @@
       <a href="assets/projects/marketpoke-job.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-job.webp" alt="Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리"></a>
       <figcaption class="figure-caption">Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리</figcaption>
     </figure>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">90.4% → 0%</div><div class="stat-label">분석 50건 동시 부하 시<br>일반 조회 오류율 (동기 → 비동기)</div></div><div class="stat-box"><div class="stat-num">420ms</div><div class="stat-label">부하 중 일반 조회 p95<br>(부하 없음 기준 38ms)</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">90.4% → 0%</div><div class="stat-label">분석 50건 동시 부하 시<br>일반 조회 Timeout 오류율 (동기 → 비동기)</div></div><div class="stat-box"><div class="stat-num">420ms</div><div class="stat-label">비동기 구조, 분석 부하 중<br>일반 조회 p95 (부하 없음 38ms)</div></div></div>
     <h3 class="subhead">LangGraph 기반 대응 전략 추천·검증 파이프라인</h3>
-    <p class="body-text">매출·리뷰 분석 결과를 기반으로 대응 전략을 생성하고, 전략 실행 이후 실제 매출과 고객 반응까지 검증하는 흐름을 상태 기반 워크플로우로 직접 설계·구현했습니다. Contextual Bandit 전략 선택 모델, RAG 근거 검색, SCM 효과 검증까지 파이프라인 전 단계를 담당했습니다.</p>
-    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>진단</strong> - 매출·리뷰 분석 결과로 매장 상태 진단</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>전략 추천</strong> - Contextual Bandit 기반 전략 선택 모델로 후보 전략 선정</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>RAG 근거 검색</strong> - BAAI/bge-m3로 벡터화한 공공·학술·플랫폼 자료에서 전략별 근거 검색</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>담당자 승인</strong> - 사람이 최종 승인한 전략만 실행 단계로 진행</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>리포트 생성</strong> - 검색 문서의 수치·출처만 활용해 생성하고, 생성 후 재검증해 환각 최소화</div></div><div class="flow-step"><div class="flow-num">06</div><div class="flow-text"><strong>효과 검증</strong> - SCM으로 실행 후 매출·방문객 변화를 검증</div></div></div>
+    <p class="body-text">매출·리뷰 분석 결과를 기반으로 대응 전략을 생성하고, 전략 실행 이후 실제 매출과 고객 반응 변화까지 추정하는 흐름을 상태 기반 워크플로우로 직접 설계·구현했습니다. Contextual Bandit 전략 선택 모델, RAG 근거 검색, SCM 적합도 검증과 효과 추정까지 파이프라인 전 단계를 담당했습니다.</p>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>진단</strong> - 매출·리뷰 분석 결과로 매장 상태 진단</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>전략 추천</strong> - Contextual Bandit 기반 전략 선택 모델로 후보 전략 선정</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>RAG 근거 검색</strong> - BAAI/bge-m3로 벡터화한 공공·학술·플랫폼 자료에서 전략별 근거 검색</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>담당자 승인</strong> - 사람이 최종 승인한 전략만 실행 단계로 진행</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>리포트 생성</strong> - 검색 문서의 수치·출처만 활용해 생성하고, 생성 후 재검증해 환각 최소화</div></div><div class="flow-step"><div class="flow-num">06</div><div class="flow-text"><strong>효과 검증·추정</strong> - SCM으로 처치 전 적합도(RMSE)를 검증한 뒤, 전략 실행 후 매출 변화 효과를 추정</div></div></div>
     <figure class="figure">
       <a href="assets/projects/marketpoke-langgraph.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-langgraph.webp" alt="LangGraph 전략 추천·승인·검증 워크플로우"></a>
       <figcaption class="figure-caption">LangGraph 전략 추천·승인·검증 워크플로우</figcaption>
@@ -119,13 +119,32 @@
     <div class="ts-block"><div class="ts-tag">진단</div><p class="body-text">장시간 수행되는 분석 작업이 HTTP 요청 내부에서 실행되고, 분석 작업과 일반 API 요청이 동일한 실행 환경을 공유하고 있었습니다. CPU 사용량이 높은 데이터 처리와 AI 추론이 요청 처리 자원을 점유해, 분석 시간에 비례해 API 응답 시간이 증가하는 구조였습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">해결</div><div>
       <div class="flow"><span class="old">기존 · Client → FastAPI → 매출 분석 → 결과 반환</span><br><span class="new">개선 · Client → FastAPI → Redis Queue → Celery Worker → 매출 분석</span></div>
-    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>구조 개선</strong> - FastAPI는 분석 요청을 Redis Queue에 등록한 뒤 Job ID를 즉시 반환 (접수 약 80ms)</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>Worker 분리</strong> - CSV 처리·데이터 병합·통계 계산·AI 추론은 Celery Worker가 전담하고, API 서버와 독립적으로 Worker 자원을 조정할 수 있는 구조로 분리</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>상태·실패 관리</strong> - Job API로 진행 상태와 결과를 조회하고, 60초 주기로 queued 20분·running 15분 초과 작업을 FAILED 처리</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>Worker 자원 검증</strong> - Worker concurrency 2와 4를 비교해 CPU 2개 제한에서는 늘려도 처리 시간이 줄지 않음을 확인하고, 개수가 아니라 CPU 자원과 측정한 처리량을 기준으로 concurrency 2를 유지</div></div></div>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>구조 개선</strong> - FastAPI는 분석 요청을 Redis Queue에 등록한 뒤 Job ID를 즉시 반환 (접수 약 80ms)</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>Worker 분리</strong> - CSV 처리·데이터 병합·통계 계산·AI 추론은 Celery Worker가 전담하고, API 서버와 독립적으로 Worker 자원을 조정할 수 있는 구조로 분리</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>상태·실패 관리</strong> - Job API로 진행 상태와 결과를 조회하고, 60초 주기로 queued 20분·running 15분 초과 작업을 FAILED 처리</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>Worker 자원 검증</strong> - Worker concurrency 2와 4를 비교한 결과, 2 vCPU 환경이라 concurrency 증가가 처리량 향상으로 이어지지 않았습니다. 따라서 CPU 자원과 측정 처리량을 기준으로 concurrency 2를 유지</div></div></div>
     </div></div>
     <div class="ts-block"><div class="ts-tag">결과</div><div>
-    <p class="body-text" style="margin-bottom:12px">분석 50건 동시 부하에서 동기 구조의 일반 조회 오류율 90.4%를 Celery 전환 후 0%로 낮췄고, 일반 조회 p95도 10초 timeout 수준에서 420ms로 개선했습니다.</p><div class="table-wrap"><table class="result-table"><thead><tr><th>조건</th><th>일반 조회 p95</th><th>오류율</th></tr></thead><tbody><tr><td>분석 부하 없음</td><td>38ms</td><td>0%</td></tr><tr><td>동기 분석 50건</td><td>10초 (timeout)</td><td class="bad">90.4%</td></tr><tr class="hl"><td>Celery 분석 50건</td><td>420ms</td><td class="good">0%</td></tr></tbody></table></div><p class="table-note">로컬 Docker Compose · FastAPI / Celery Worker 각 2 CPU·2GB · 일반 조회 constant-arrival-rate 20 req/s · 분석 50건 동시 · 워밍업 30초 후 본측정 3분, 조건별 3회</p>
+    <p class="body-text" style="margin-bottom:12px">분석 50건 동시 부하에서 일반 조회 <strong>Timeout 오류율이 90.4% → 0%</strong>로 줄었습니다. 분석 부하 중에도 <strong>일반 조회 p95 420ms</strong>(부하 없음 38ms)를 유지했습니다.</p><div class="table-wrap"><table class="result-table"><thead><tr><th>조건</th><th>일반 조회 p95</th><th>오류율</th></tr></thead><tbody><tr><td>분석 부하 없음</td><td>38ms</td><td>0%</td></tr><tr><td>동기 분석 50건</td><td>측정 제외 (timeout 10초)</td><td class="bad">90.4%</td></tr><tr class="hl"><td>Celery 분석 50건</td><td>420ms</td><td class="good">0%</td></tr></tbody></table></div><p class="table-note">로컬 Docker Compose · FastAPI / Celery Worker 각 2 CPU·2GB · 일반 조회 constant-arrival-rate 20 req/s · 분석 50건 동시 · 워밍업 30초 후 본측정 3분, 조건별 3회</p>
     </div></div>
     <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">Celery의 효과는 분석을 빠르게 하는 것이 아니라 무거운 작업이 일반 요청을 막지 않도록 격리하는 것이며, 성능 지표는 해결하려는 문제에서 나와야 한다는 점을 배웠습니다.</p></div>
     </article>
+  </div>
+</section>
+
+<section id="appendix" class="">
+  <div class="page-section detail-section">
+    <div class="section-label">Appendix</div>
+    <h2 class="d-section-title">왜 Celery인가</h2>
+    <p class="body-text">이 문제에 필요한 것은 여러 서비스가 구독하는 이벤트 스트림이 아니라, <strong>요청 1건이 작업 1건이 되는 장시간 Python 작업 큐</strong>였습니다. 작업 상태를 추적하고, 너무 오래 걸리는 작업을 정리하고, CPU 자원에 맞춰 동시 실행 수를 조절할 수 있어야 했습니다.</p>
+    <div class="table-wrap"><table class="result-table"><thead><tr><th>기준</th><th>Celery + Redis</th><th>RabbitMQ</th><th>Kafka</th></tr></thead><tbody>
+      <tr><td>분석 코드 실행</td><td class="good">Python 함수를 태스크로 바로 실행</td><td>큐만 제공, Worker·재시도는 직접 구현</td><td>Consumer 루프·재시도·상태 관리 직접 구현</td></tr>
+      <tr><td>추가 인프라</td><td class="good">이미 쓰는 ElastiCache Redis를 브로커로 재사용</td><td>브로커 추가 운영</td><td>브로커 클러스터 추가 운영</td></tr>
+      <tr><td>주기 작업</td><td class="good">Celery Beat 내장 (정체 작업 정리)</td><td>별도 스케줄러 필요</td><td>별도 스케줄러 필요</td></tr>
+      <tr><td>동시 실행 조절</td><td class="good">Worker concurrency</td><td>Consumer 수</td><td>파티션 수에 묶임</td></tr>
+      <tr><td>더 적합한 경우</td><td>요청-작업 1:1 비동기 처리</td><td>복잡한 라우팅, 강한 전달 보장</td><td>여러 Consumer가 같은 이벤트를 구독·재처리</td></tr>
+    </tbody></table></div>
+    <h3 class="subhead">선택의 대가와 보완</h3>
+    <p class="body-text">Redis 브로커는 RabbitMQ보다 메시지 전달 보장이 약해, Worker가 처리 중 종료되면 작업이 유실되거나 늦게 재전달될 수 있습니다. 이를 세 가지로 보완했습니다.</p>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>완료 후 ack</strong> - <code>task_acks_late</code>·<code>task_reject_on_worker_lost</code>로 처리 도중 Worker가 죽으면 유실 대신 재전달</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>재실행 안전성</strong> - Job 상태를 MySQL(<code>ai_analysis_jobs</code>)에 두고, queued·running일 때만 전환하는 조건부 UPDATE와 INSERT IGNORE로 재전달돼도 안전하게 처리</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>정체 작업 정리</strong> - Celery Beat가 60초 주기로 queued 20분·running 15분 초과 작업을 FAILED 처리하고, 실패 처리된 작업이 뒤늦게 재전달되면 실행하지 않음</div></div></div>
+    <p class="body-text">반대로 <a href="news.html">AI 뉴스 분석 시스템</a>에서는 크롤링 요청을 이벤트로 발행하고 후속 처리를 Consumer로 분리하기 위해 Kafka를 사용했습니다. 도구는 해결하려는 문제의 형태에 맞춰 선택했습니다.</p>
   </div>
 </section>
 

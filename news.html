@@ -57,7 +57,7 @@
     <h3 class="subhead">전체 아키텍처</h3>
     <p class="body-text">GitHub에 push하면 GitHub Actions가 이미지를 빌드해 Docker Hub에 올리고, AWS EC2가 이미지를 pull해 Docker Compose로 전체 서비스를 실행합니다. Nginx가 요청을 받아 Spring Boot Blue·Green 중 활성 버전으로 전달하는 Blue-Green 구조로 무중단 배포하며, Spring Boot는 MySQL·Redis·Kafka와 연동하고 FastAPI는 크롤링과 AI 분석을 맡아 OpenAI·OpenBB·yfinance 등 외부 API를 호출합니다.</p>
     <figure class="figure">
-      <a href="assets/projects/news-arch-v2.webp" target="_blank" rel="noopener"><img src="assets/projects/news-arch-v2.webp" alt="AI 뉴스 분석 시스템 아키텍처 - AWS EC2 · Docker Compose · Nginx Blue-Green · GitHub Actions → Docker Hub"></a>
+      <a href="assets/projects/news-arch-v3.webp" target="_blank" rel="noopener"><img src="assets/projects/news-arch-v3.webp" alt="AI 뉴스 분석 시스템 아키텍처 - AWS EC2 · Docker Compose · Nginx Blue-Green · GitHub Actions → Docker Hub"></a>
       <figcaption class="figure-caption">AI 뉴스 분석 시스템 아키텍처 - AWS EC2 · Docker Compose · Nginx Blue-Green · GitHub Actions → Docker Hub</figcaption>
     </figure>
     <h3 class="subhead">서비스 화면</h3>
