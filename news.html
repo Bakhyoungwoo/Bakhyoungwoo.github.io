@@ -92,14 +92,14 @@
     <p class="body-text">크롤링 결과는 DB에 먼저 저장한 뒤 해당 카테고리 캐시를 삭제해, 다음 조회 때 최신값으로 다시 채워지도록 갱신 순서를 정했습니다.</p>
     <h3 class="subhead">Nginx Blue-Green 무중단 배포와 자동 롤백</h3>
     <p class="body-text">Nginx 기반 Blue-Green 배포로 서비스 중단 없이 새 버전으로 전환하고, 전환 후 5xx 응답 비율을 자동으로 판정해 기준을 넘으면 이전 버전으로 롤백되도록 구성했습니다.</p>
-    <h3 class="subhead">AI 기반 뉴스 키워드 추출</h3>
-    <p class="body-text">기사별 순차 처리를 카테고리 단위 배치 처리와 SBERT 임베딩 일괄 계산으로 바꿔 처리 시간을 줄였고, 추출한 키워드는 Redis ZSET에 누적해 카테고리별 실시간 키워드 랭킹으로 제공합니다.</p>
-    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>형태소 분석</strong> - Okt로 기사 본문 형태소 분석</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>필터링</strong> - 불용어·숫자·1글자 토큰 제거</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>키워드 추출</strong> - KR-SBERT 기반 KeyBERT와 MMR로 대표성과 다양성을 함께 고려</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>랭킹</strong> - Redis ZSET에 누적해 카테고리별 실시간 랭킹 제공</div></div></div>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중 조사·어미 포함 비율<br>(기사 270건 · 키워드 30개 기준)</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
     <h3 class="subhead">Redis 기반 개인화 뉴스 추천</h3>
     <p class="body-text">클릭한 뉴스의 키워드를 Redis ZSET에 누적해 사용자 관심도를 관리하고, 기사 키워드와 비교해 개인화 추천을 제공합니다. 신규 사용자를 위한 Cold Start fallback과 JWT 인증·북마크 API도 구현했습니다.</p>
     <h3 class="subhead">외부 AI 분석 서비스 장애 격리 및 모니터링</h3>
     <p class="body-text">종목 분석 데이터를 외부 AI(OpenBB) 서비스에서 받아오는 구조에서, 해당 서비스 장애가 전체 장애로 전파되지 않도록 Fallback 응답을 설계했습니다. Prometheus·Grafana로 토픽별 처리량·Consumer Lag·API 응답시간을 관측합니다.</p>
+    <h3 class="subhead">AI 기반 뉴스 키워드 추출</h3>
+    <p class="body-text">기사별 순차 처리를 카테고리 단위 배치 처리와 SBERT 임베딩 일괄 계산으로 바꿔 처리 시간을 줄였고, 추출한 키워드는 Redis ZSET에 누적해 카테고리별 실시간 키워드 랭킹으로 제공합니다.</p>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>형태소 분석</strong> - Okt로 기사 본문 형태소 분석</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>필터링</strong> - 불용어·숫자·1글자 토큰 제거</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>키워드 추출</strong> - KR-SBERT 기반 KeyBERT와 MMR로 대표성과 다양성을 함께 고려</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>랭킹</strong> - Redis ZSET에 누적해 카테고리별 실시간 랭킹 제공</div></div></div>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중 조사·어미 포함 비율<br>(기사 270건 · 키워드 30개 기준)</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
     <h3 class="subhead">기타</h3>
     <p class="body-text">DB 스키마 관리를 Liquibase로 전환해 변경 이력을 changeset 단위로 추적하고, 한글 종목명 검색 시 발생하던 URL 이중 인코딩 버그를 발견·수정했습니다.</p>
   </div>
