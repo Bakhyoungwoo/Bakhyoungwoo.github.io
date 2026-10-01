@@ -91,7 +91,9 @@
     <p class="body-text">여러 사용자가 공통으로 조회하는 카테고리별 추천 후보 뉴스를 요청마다 MySQL에서 반복 조회해 불필요한 DB 부하가 쌓이는 구조였습니다. Redis에 우선 캐싱하고 캐시 미스 시에만 MySQL을 조회해 채우는 Cache-Aside 패턴을 적용하고, 오래된 데이터 방지를 위해 10분 TTL을 설정했습니다.</p>
     <p class="body-text">크롤링 결과는 DB에 먼저 저장한 뒤 해당 카테고리 캐시를 삭제해, 다음 조회 때 최신값으로 다시 채워지도록 갱신 순서를 정했습니다.</p>
     <h3 class="subhead">Nginx Blue-Green 무중단 배포와 자동 롤백</h3>
-    <p class="body-text">Nginx 기반 Blue-Green 배포로 서비스 중단 없이 새 버전으로 전환하고, 전환 후 5xx 응답 비율을 자동으로 판정해 기준을 넘으면 이전 버전으로 롤백되도록 구성했습니다.</p>
+    <p class="body-text">Nginx 기반 Blue-Green 배포에서 compose 의존성 때문에 활성 슬롯까지 재시작되던 문제를 수정해 배포 중 실패 요청을 없앴습니다. 전환 후 5xx 비율을 5초 간격으로 판정해, 장애 버전은 약 9초 안에 이전 버전으로 롤백되도록 개선했습니다.</p>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">3,332 → 0건</div><div class="stat-label">배포 중 실패 요청 (502)<br>(총 14,226건 중)</div></div><div class="stat-box"><div class="stat-num">60s 대기 → 9.0s</div><div class="stat-label">5xx 50% 주입 시<br>전환~롤백 완료 시간</div></div><div class="stat-box"><div class="stat-num">0 / 5회</div><div class="stat-label">5xx 3%(임계치 5% 미만)에서<br>오탐 롤백</div></div></div>
+    <p class="table-note">로컬 Docker · k6 10 VU · 인증된 뉴스 조회 API(/api/news/it) · 관찰 창 60초, 5초 간격 판정</p>
     <h3 class="subhead">Redis 기반 개인화 뉴스 추천</h3>
     <p class="body-text">클릭한 뉴스의 키워드를 Redis ZSET에 누적해 사용자 관심도를 관리하고, 기사 키워드와 비교해 개인화 추천을 제공합니다. 신규 사용자를 위한 Cold Start fallback과 JWT 인증·북마크 API도 구현했습니다.</p>
     <h3 class="subhead">외부 AI 분석 서비스 장애 격리 및 모니터링</h3>
