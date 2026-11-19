@@ -125,13 +125,10 @@
   <div class="page-section detail-section">
     <div class="section-label">Appendix</div>
     <h2 class="d-section-title">왜 Celery인가</h2>
-    <p class="body-text">이 문제에 필요한 것은 여러 서비스가 구독하는 이벤트 스트림이 아니라, <strong>요청 1건이 작업 1건이 되는 장시간 Python 작업 큐</strong>였습니다. 작업 상태를 추적하고, 너무 오래 걸리는 작업을 정리하고, CPU 자원에 맞춰 동시 실행 수를 조절할 수 있어야 했습니다.</p>
+    <p class="body-text">이 문제에 필요한 것은 여러 서비스가 구독하는 이벤트 스트림이 아니라, <strong>요청 1건이 작업 1건이 되는 장시간 Python 작업 큐</strong>였습니다. 작업 상태를 추적하고, 너무 오래 걸리는 작업을 정리할 수 있어야 했습니다.</p>
     <div class="table-wrap"><table class="result-table"><thead><tr><th>기준</th><th>Celery + Redis</th><th>RabbitMQ</th><th>Kafka</th></tr></thead><tbody>
       <tr><td>분석 코드 실행</td><td class="good">Python 함수를 태스크로 바로 실행</td><td>큐만 제공, Worker·재시도는 직접 구현</td><td>Consumer 루프·재시도·상태 관리 직접 구현</td></tr>
-      <tr><td>추가 인프라</td><td class="good">이미 쓰는 ElastiCache Redis를 브로커로 재사용</td><td>브로커 추가 운영</td><td>브로커 클러스터 추가 운영</td></tr>
       <tr><td>주기 작업</td><td class="good">Celery Beat 내장 (정체 작업 정리)</td><td>별도 스케줄러 필요</td><td>별도 스케줄러 필요</td></tr>
-      <tr><td>동시 실행 조절</td><td class="good">Worker concurrency</td><td>Consumer 수</td><td>파티션 수에 묶임</td></tr>
-      <tr><td>더 적합한 경우</td><td>요청-작업 1:1 비동기 처리</td><td>복잡한 라우팅, 강한 전달 보장</td><td>여러 Consumer가 같은 이벤트를 구독·재처리</td></tr>
     </tbody></table></div>
   </div>
 </section>
