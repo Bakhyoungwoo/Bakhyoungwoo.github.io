@@ -116,7 +116,7 @@
     <div class="ts-block"><div class="ts-tag">결과</div><div>
     <p class="body-text" style="margin-bottom:12px">분석 50건 동시 부하에서 일반 조회 <strong>Timeout 오류율이 90.4% → 0%</strong>로 줄었습니다. 분석 부하 중에도 <strong>일반 조회 p95 420ms</strong>(부하 없음 38ms)를 유지했습니다.</p><div class="table-wrap"><table class="result-table"><thead><tr><th>조건</th><th>일반 조회 p95</th><th>오류율</th></tr></thead><tbody><tr><td>분석 부하 없음</td><td>38ms</td><td>0%</td></tr><tr><td>동기 분석 50건</td><td>측정 제외 (timeout 10초)</td><td class="bad">90.4%</td></tr><tr class="hl"><td>Celery 분석 50건</td><td>420ms</td><td class="good">0%</td></tr></tbody></table></div><p class="table-note">로컬 Docker Compose · FastAPI / Celery Worker 각 2 CPU·2GB · 일반 조회 constant-arrival-rate 20 req/s · 분석 50건 동시 · 워밍업 30초 후 본측정 3분, 조건별 3회</p>
     </div></div>
-    <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">Celery의 효과는 분석을 빠르게 하는 것이 아니라 무거운 작업이 일반 요청을 막지 않도록 격리하는 것이며, 성능 지표는 해결하려는 문제에서 나와야 한다는 점을 배웠습니다.</p></div>
+    <div class="ts-block"><div class="ts-tag">배운 점</div><p class="body-text">이 경험을 통해 개별 기능의 처리 속도뿐 아니라, 여러 작업이 동시에 실행될 때 시스템 전체에 미치는 영향까지 함께 봐야 한다는 것을 배웠습니다.</p></div>
     </article>
   </div>
 </section>
