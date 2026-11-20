@@ -105,7 +105,6 @@
     <p class="body-text">요청 분석부터 검증까지 이어지는 파이프라인을 Spring Boot - FastAPI로 연동하고, 관광지·음식점·숙소 Agent가 공통 검색 API를 사용하도록 통합했습니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>요청 분석</strong> - 사용자의 지역·기간·동행·선호 조건 파악</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>장소 검색</strong> - 관광지·음식점·숙소 Agent가 공통 Elasticsearch 검색 API 사용</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>일정 생성</strong> - 검색 결과를 바탕으로 일자별 코스 구성</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>검증</strong> - 일정 중복·시간 충돌·누락을 검증하고 기준 미달 시 재생성</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>근거 차단</strong> - 검색 결과 조건에 근거하지 않은 주장은 차단하고, 근거 부족 시 fallback 응답 반환</div></div></div>
     <div class="stat-row" style="grid-template-columns:repeat(auto-fit,minmax(170px,340px))"><div class="stat-box"><div class="stat-num">37 → 0건</div><div class="stat-label">일정에 없는 장소 ID를 인용한 Claim<br>근거 검증 단계에서 차단 · 고유 요청 310건</div></div></div>
-    <p class="table-note">차단된 응답 40건을 전수 감사한 결과 실제 환각은 없었고, 모두 시간 표기·필드명 불일치로 인한 검증기 오탐이었습니다. 검증 전 정규화 규칙 보완이 다음 과제입니다.</p>
     <div class="role-head">
       <div class="role-num">담당 기능 04</div>
       <h3 class="subhead">서비스 모니터링</h3>
