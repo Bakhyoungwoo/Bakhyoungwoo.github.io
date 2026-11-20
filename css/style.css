@@ -146,7 +146,7 @@ html.dark .icon-moon { display: none; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
 /* ---------- METRICS ---------- */
-.metrics { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--black); }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--black); }
 .metric { padding: 28px 24px 8px 0; border-right: 1px solid var(--gray-line); padding-left: 24px; }
 .metric:first-child { padding-left: 0; }
 .metric:last-child { border-right: none; }
@@ -313,6 +313,18 @@ html.dark .figure img { opacity: .92; }
 .pager a small { font-family: var(--font-body); font-size: .72rem; letter-spacing: .08em; color: var(--gray-mid); }
 .pager a:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
 .pager .next { text-align: right; align-items: flex-end; }
+/* ---------- 담당 기능 블록 ---------- */
+.role-head { margin-top: 56px; }
+.d-section-title + .role-head { margin-top: 0; }
+.role-num { font-size: .68rem; font-weight: 600; letter-spacing: .14em; color: var(--accent); }
+.role-head .subhead { margin: 4px 0 10px; }
+.role-desc { font-size: .93rem; color: var(--gray-dark); line-height: 1.85; margin-bottom: 14px; }
+.svc-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; padding: 14px 16px; background: var(--accent-light); border-radius: 4px; margin-bottom: 24px; }
+.svc-flow span { font-size: .78rem; font-weight: 500; padding: 5px 10px; background: var(--white); color: var(--gray-dark); border: 1px solid var(--gray-line); border-radius: 2px; white-space: nowrap; }
+.svc-flow .arr { font-weight: 400; color: var(--accent); font-size: .8rem; }
+.contrib-label { font-size: .72rem; font-weight: 600; letter-spacing: .06em; color: var(--gray-mid); padding-top: 14px; border-top: 1px solid var(--gray-line); margin-bottom: 10px; }
+.contrib-label span { margin-left: 10px; color: var(--black); letter-spacing: 0; }
+
 @media (max-width: 768px) {
   .detail-section { padding: 52px 24px; }
   .d-hero { padding-top: 108px; padding-bottom: 40px; }

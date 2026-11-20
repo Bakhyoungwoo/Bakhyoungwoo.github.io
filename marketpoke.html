@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body class="detail-page">
 
@@ -81,21 +81,33 @@
 <section id="contribution" class="">
   <div class="page-section detail-section">
     <div class="section-label">My Contribution</div>
-    <h2 class="d-section-title">핵심 기여</h2>
-    <h3 class="subhead">Celery·Redis 기반 비동기 분석 처리</h3>
-    <p class="body-text">장시간 걸리는 매출 분석 작업을 API 요청과 Celery Worker로 분리하고, 작업 상태를 <strong>QUEUED → RUNNING → DONE / FAILED</strong> 단계로 나누어 관리하는 Job API를 구현했습니다. 정체된 작업은 Celery Beat가 주기적으로 정리하도록 구성해 분석 작업과 일반 API 요청의 처리 환경을 격리했습니다.</p>
-    <figure class="figure">
-      <a href="assets/projects/marketpoke-job.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-job.webp" alt="Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리"></a>
-      <figcaption class="figure-caption">Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리</figcaption>
-    </figure>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">90.4% → 0%</div><div class="stat-label">분석 50건 동시 부하 시<br>일반 조회 Timeout 오류율 (동기 → 비동기)</div></div><div class="stat-box"><div class="stat-num">420ms</div><div class="stat-label">비동기 구조, 분석 부하 중<br>일반 조회 p95 (부하 없음 38ms)</div></div></div>
-    <h3 class="subhead">LangGraph 기반 대응 전략 추천·검증 파이프라인</h3>
+    <h2 class="d-section-title">담당 기능</h2>
+    <div class="role-head">
+      <div class="role-num">담당 기능 01</div>
+      <h3 class="subhead">매장 분석 및 맞춤형 대응 전략 추천</h3>
+      <p class="role-desc">매출·리뷰 분석 결과로 매장 상황을 진단하고, 매장에 맞는 대응 전략을 검색된 근거와 함께 추천받아 담당자 승인 후 근거 기반 리포트로 확인하는 기능입니다.</p>
+      <div class="svc-flow"><span>매장 상태 진단</span><b class="arr">→</b><span>Contextual Bandit 기반 전략 추천</span><b class="arr">→</b><span>RAG 근거 검색</span><b class="arr">→</b><span>담당자 승인</span><b class="arr">→</b><span>근거 기반 리포트 생성 및 검증</span></div>
+    </div>
+    <div class="contrib-label">핵심 기여<span>LangGraph 기반 대응 전략 추천·검증 파이프라인</span></div>
     <p class="body-text">매출·리뷰 분석 결과를 기반으로 대응 전략을 추천하고, 근거 검색·담당자 승인·리포트 검증까지 이어지는 흐름을 상태 기반 워크플로우로 직접 설계·구현했습니다. Contextual Bandit 전략 선택 모델과 RAG 근거 검색을 포함한 파이프라인 전 단계를 담당했습니다.</p>
     <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>진단</strong> - 매출·리뷰 분석 결과로 매장 상태 진단</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>전략 추천</strong> - Contextual Bandit 기반 전략 선택 모델로 후보 전략 선정</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>RAG 근거 검색</strong> - BAAI/bge-m3로 벡터화한 공공·학술·플랫폼 자료에서 전략별 근거 검색</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>담당자 승인</strong> - 사람이 최종 승인한 전략만 실행 단계로 진행</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>리포트 생성</strong> - 검색 문서의 수치·출처만 활용해 생성하고, 생성 후 재검증해 환각 최소화</div></div></div>
     <figure class="figure">
       <a href="assets/projects/marketpoke-langgraph.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-langgraph.webp" alt="LangGraph 전략 추천·승인·검증 워크플로우"></a>
       <figcaption class="figure-caption">LangGraph 전략 추천·승인·검증 워크플로우</figcaption>
     </figure>
+    <div class="role-head">
+      <div class="role-num">담당 기능 02</div>
+      <h3 class="subhead">비동기 매출 분석 요청 및 작업 상태 관리</h3>
+      <p class="role-desc">사용자가 매출 분석을 요청하면 즉시 Job ID를 받고, 분석이 끝날 때까지 Job API로 진행 상태와 결과를 확인할 수 있는 기능입니다.</p>
+      <div class="svc-flow"><span>분석 요청</span><b class="arr">→</b><span>작업 등록 및 Job ID 반환</span><b class="arr">→</b><span>Celery Worker 분석 수행</span><b class="arr">→</b><span>작업 상태 갱신</span><b class="arr">→</b><span>결과 조회</span></div>
+    </div>
+    <div class="contrib-label">핵심 기여<span>Celery·Redis 기반 비동기 분석 처리</span></div>
+    <p class="body-text">장시간 걸리는 매출 분석 작업을 API 요청과 Celery Worker로 분리하고, 작업 상태를 <strong>QUEUED → RUNNING → DONE / FAILED</strong> 단계로 나누어 관리하는 Job API를 구현했습니다. 정체된 작업은 Celery Beat가 주기적으로 정리하도록 구성해 분석 작업과 일반 API 요청의 처리 환경을 격리했습니다.</p>
+    <figure class="figure">
+      <a href="assets/projects/marketpoke-job.webp" target="_blank" rel="noopener"><img src="assets/projects/marketpoke-job.webp" alt="Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리"></a>
+      <figcaption class="figure-caption">Job 상태 전이 - Celery Beat가 60초 주기로 정체 작업을 정리</figcaption>
+    </figure>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">90.4% → 0%</div><div class="stat-label">분석 50건 동시 부하 시<br>일반 조회 Timeout 오류율 (동기 → 비동기)</div></div><div class="stat-box"><div class="stat-num">420ms</div><div class="stat-label">비동기 구조, 분석 부하 중<br>일반 조회 p95 (부하 없음 38ms)</div></div></div>
   </div>
 </section>
 

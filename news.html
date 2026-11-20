@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Noto+Serif+KR:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body class="detail-page">
 
@@ -78,25 +78,39 @@
 <section id="contribution" class="">
   <div class="page-section detail-section">
     <div class="section-label">My Contribution</div>
-    <h2 class="d-section-title">핵심 기여</h2>
-    <h3 class="subhead">Kafka 기반 비동기 뉴스 크롤링 파이프라인</h3>
+    <h2 class="d-section-title">담당 기능</h2>
+    <div class="role-head">
+      <div class="role-num">담당 기능 01</div>
+      <h3 class="subhead">카테고리별 최신 뉴스 수집</h3>
+      <p class="role-desc">카테고리별 최신 뉴스를 수집해 저장하는 기능입니다. 수집에 20초 넘게 걸려도 스케줄러는 기다리지 않고 바로 응답을 받습니다.</p>
+      <div class="svc-flow"><span>스케줄러 수집 요청</span><b class="arr">→</b><span>즉시 접수 응답 (202)</span><b class="arr">→</b><span>백그라운드 크롤링</span><b class="arr">→</b><span>DB 저장</span><b class="arr">→</b><span>최신 뉴스 조회</span></div>
+    </div>
+    <div class="contrib-label">핵심 기여<span>Kafka 기반 비동기 뉴스 크롤링 파이프라인</span></div>
     <p class="body-text">동기 HTTP로 크롤링을 연동할 때 평균 20.4초 걸리는 작업이 10초 Timeout을 초과해 요청이 실패하는 문제를 발견했습니다. Kafka Producer/Consumer 구조로 전환해 요청은 즉시 202 Accepted로 응답하고, Consumer가 크롤링·저장을 비동기로 처리하도록 개선했습니다.</p>
     <p class="body-text">카테고리별 크롤링 시작 시 Redis 잠금을 걸고 완료 후 해제해, 같은 카테고리의 중복 크롤링을 막았습니다.</p>
     <figure class="figure">
       <a href="assets/projects/news-sequence.webp" target="_blank" rel="noopener"><img src="assets/projects/news-sequence.webp" alt="크롤링 시퀀스 다이어그램 - Redis 잠금 → 크롤링 → DB 저장 → 캐시 삭제 → 잠금 해제"></a>
       <figcaption class="figure-caption">크롤링 시퀀스 다이어그램 - Redis 잠금 → 크롤링 → DB 저장 → 캐시 삭제 → 잠금 해제</figcaption>
     </figure>
-    <h3 class="subhead">Redis Cache-Aside 기반 뉴스 조회 캐싱</h3>
+    <div class="role-head">
+      <div class="role-num">담당 기능 02</div>
+      <h3 class="subhead">맞춤 뉴스 조회</h3>
+      <p class="role-desc">관심 카테고리의 추천 후보 뉴스를 빠르게 불러오는 기능입니다. 여러 사용자가 같은 후보를 조회하므로 캐시로 DB 부하를 줄였습니다.</p>
+      <div class="svc-flow"><span>뉴스 조회</span><b class="arr">→</b><span>Redis 캐시 확인</span><b class="arr">→</b><span>캐시 미스 시 MySQL 조회·캐싱</span><b class="arr">→</b><span>맞춤 뉴스 표시</span></div>
+    </div>
+    <div class="contrib-label">핵심 기여<span>Redis Cache-Aside 기반 뉴스 조회 캐싱</span></div>
     <p class="body-text">여러 사용자가 공통으로 조회하는 카테고리별 추천 후보 뉴스를 요청마다 MySQL에서 반복 조회해 불필요한 DB 부하가 쌓이는 구조였습니다. Redis에 우선 캐싱하고 캐시 미스 시에만 MySQL을 조회해 채우는 Cache-Aside 패턴을 적용하고, 오래된 데이터 방지를 위해 10분 TTL을 설정했습니다.</p>
     <p class="body-text">크롤링 결과는 DB에 먼저 저장한 뒤 해당 카테고리 캐시를 삭제해, 다음 조회 때 최신값으로 다시 채워지도록 갱신 순서를 정했습니다.</p>
-    <h3 class="subhead">Nginx Blue-Green 무중단 배포와 자동 롤백</h3>
+    <div class="role-head">
+      <div class="role-num">담당 기능 03</div>
+      <h3 class="subhead">무중단 배포·자동 롤백</h3>
+      <p class="role-desc">새 버전을 배포하는 동안에도 사용자는 끊김 없이 서비스를 이용하고, 새 버전에 문제가 생기면 자동으로 이전 버전으로 되돌리는 기능입니다.</p>
+      <div class="svc-flow"><span>push</span><b class="arr">→</b><span>이미지 빌드</span><b class="arr">→</b><span>대기 슬롯 배포</span><b class="arr">→</b><span>트래픽 전환</span><b class="arr">→</b><span>5xx 감시</span><b class="arr">→</b><span>이상 시 자동 롤백</span></div>
+    </div>
+    <div class="contrib-label">핵심 기여<span>Nginx Blue-Green 무중단 배포와 자동 롤백</span></div>
     <p class="body-text">Nginx 기반 Blue-Green 배포에서 compose 의존성 때문에 활성 슬롯까지 재시작되던 문제를 수정해 배포 중 실패 요청을 없앴습니다. 전환 후 5xx 비율을 5초 간격으로 판정해, 장애 버전은 약 9초 안에 이전 버전으로 롤백되도록 개선했습니다.</p>
     <div class="stat-row"><div class="stat-box"><div class="stat-num">약 37초 → 0초</div><div class="stat-label">배포 중 서비스 중단<br>(502 실패 3,332건 → 0건)</div></div><div class="stat-box"><div class="stat-num">60s 대기 → 9.0s</div><div class="stat-label">5xx 50% 주입 시 전환~롤백 완료<br>(부하 시 9.0s · 저트래픽 20.7s)</div></div><div class="stat-box"><div class="stat-num">0 / 5회</div><div class="stat-label">5xx 3%(임계치 5% 미만)에서<br>오탐 롤백</div></div></div>
     <p class="table-note">로컬 Docker · k6 10 VU · 인증된 뉴스 조회 API(/api/news/it) · 관찰 창 60초, 5초 간격 판정</p>
-    <h3 class="subhead">AI 기반 뉴스 키워드 추출</h3>
-    <p class="body-text">기사별 순차 처리를 카테고리 단위 배치 처리와 SBERT 임베딩 일괄 계산으로 바꿔 처리 시간을 줄였고, 추출한 키워드는 Redis ZSET에 누적해 카테고리별 실시간 키워드 랭킹으로 제공합니다.</p>
-    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>형태소 분석</strong> - Okt로 기사 본문 형태소 분석</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>필터링</strong> - 불용어·숫자·1글자 토큰 제거</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>키워드 추출</strong> - KR-SBERT 기반 KeyBERT와 MMR로 대표성과 다양성을 함께 고려</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>랭킹</strong> - Redis ZSET에 누적해 카테고리별 실시간 랭킹 제공</div></div></div>
-    <div class="stat-row"><div class="stat-box"><div class="stat-num">86.7% → 0%</div><div class="stat-label">Top 5 키워드 중 조사·어미 포함 비율<br>(기사 270건 · 키워드 30개 기준)</div></div><div class="stat-box"><div class="stat-num">37 → 0쌍</div><div class="stat-label">유사 키워드 쌍<br>(코사인 유사도 0.8 이상)</div></div><div class="stat-box"><div class="stat-num">97.0%↓</div><div class="stat-label">카테고리별 처리 시간<br>48.35s → 1.47s</div></div></div>
     <h3 class="subhead">그 외 구현</h3>
     <div class="feats"><div class="feat-col"><ul>
       <li><strong>개인화 추천</strong> - 클릭한 뉴스의 키워드를 Redis ZSET에 누적해 관심도 기반으로 추천하고, 신규 사용자는 Cold Start fallback 적용</li>
