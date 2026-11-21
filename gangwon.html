@@ -80,7 +80,7 @@
       <div class="svc-flow"><span>코스 생성 요청</span><b class="arr">→</b><span>Agent의 검색 API 호출</span><b class="arr">→</b><span>전문 검색·필터링</span><b class="arr">→</b><span>관광지·음식점·숙소 후보</span><b class="arr">→</b><span>코스 생성</span></div>
     </div>
     <div class="contrib-label">핵심 기여<span>Elasticsearch 기반 장소 검색 API 분리</span></div>
-    <p class="body-text">초기 PostgreSQL 기반 검색 구조에서 반복적인 복합 조건 조회로 병목이 발생했습니다. 검색 기능을 Elasticsearch로 분리하고 관광지·음식점·숙소 데이터를 통합 색인한 뒤, 전문 검색과 필터링을 활용한 복합 조건 검색 API를 구현했습니다.</p>
+    <p class="body-text">초기에는 관광지·음식점·숙소 테이블을 각각 LIKE 조건으로 조회해, 키워드와 필터가 겹치는 복합 조건 검색에서 인덱스를 활용하지 못하고 응답 지연이 발생했습니다. 검색 기능을 Elasticsearch로 분리하고 관광지·음식점·숙소 데이터를 통합 색인한 뒤, 전문 검색과 필터링을 활용한 복합 조건 검색 API를 구현했습니다.</p>
     <div class="stat-row"><div class="stat-box"><div class="stat-num">271.6 → 29.2ms</div><div class="stat-label">검색 API p95 (-89.3%)<br>기존 RDB 검색 API 대비 · k6 · VU 20 · 5분</div></div><div class="stat-box"><div class="stat-num">76.4 → 135.5 req/s</div><div class="stat-label">처리량 (+77.3%)<br>기존 RDB 검색 API 대비 · k6 · VU 20 · 5분</div></div></div>
     <div class="role-head">
       <div class="role-num">담당 기능 02</div>
