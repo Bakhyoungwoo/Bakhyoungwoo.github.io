@@ -75,6 +75,16 @@
     <h2 class="d-section-title">담당 기능</h2>
     <div class="role-head">
       <div class="role-num">담당 기능 01</div>
+      <h3 class="subhead">AI 맞춤 여행 코스 생성</h3>
+      <p class="role-desc">지역·기간·동행·선호를 입력하면 AI가 관광지·음식점·숙소 후보를 검색해 일자별 여행 코스를 만들고, 실제 검색된 장소에 근거한 코스만 보여주는 기능입니다.</p>
+      <div class="svc-flow"><span>여행 조건 입력</span><b class="arr">→</b><span>장소 후보 검색</span><b class="arr">→</b><span>AI 코스 생성</span><b class="arr">→</b><span>일정·근거 검증</span><b class="arr">→</b><span>일자별 코스 확인</span></div>
+    </div>
+    <div class="contrib-label">핵심 기여<span>LangGraph 기반 여행 코스 생성·근거 검증</span></div>
+    <p class="body-text">요청 분석부터 검증까지 이어지는 파이프라인을 Spring Boot - FastAPI로 연동하고, 관광지·음식점·숙소 Agent가 모두 공통 Elasticsearch 검색 API를 사용하도록 통합했습니다.</p>
+    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>요청 분석</strong> - 사용자의 지역·기간·동행·선호 조건 파악</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>장소 검색</strong> - 공통 Elasticsearch 검색 API로 관광지·음식점·숙소 후보 조회</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>일정 생성</strong> - 검색 결과를 바탕으로 일자별 코스 구성</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>검증</strong> - 일정 중복·시간 충돌·누락을 검증하고 기준 미달 시 재생성</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>근거 차단</strong> - 검색 결과 조건에 근거하지 않은 주장은 차단하고, 근거 부족 시 fallback 응답 반환</div></div></div>
+    <div class="stat-row" style="grid-template-columns:repeat(auto-fit,minmax(170px,340px))"><div class="stat-box"><div class="stat-num">37 → 0건</div><div class="stat-label">일정에 없는 장소 ID를 인용한 Claim<br>근거 검증 단계에서 차단 · 고유 요청 310건</div></div></div>
+    <div class="role-head">
+      <div class="role-num">담당 기능 02</div>
       <h3 class="subhead">CDC 파이프라인</h3>
       <p class="role-desc">장소 데이터가 바뀌면 CDC 파이프라인을 통해 검색 결과에도 자동으로 반영하는 기능입니다.</p>
       <div class="svc-flow"><span>장소 데이터 변경 (PostgreSQL)</span><b class="arr">→</b><span>Debezium 변경 감지</span><b class="arr">→</b><span>Kafka 이벤트 전달</span><b class="arr">→</b><span>Elasticsearch 갱신</span></div>
@@ -86,16 +96,6 @@
       <figcaption class="figure-caption">PostgreSQL WAL → Debezium → Kafka Topic → Spring Consumer → Elasticsearch</figcaption>
     </figure>
     <div class="stat-row"><div class="stat-box"><div class="stat-num">34.8초</div><div class="stat-label">재시도 한도(약 61초)를 넘는<br>ES 120초 장애에서도 DLT 재색인으로 반영</div></div><div class="stat-box"><div class="stat-num">1,054ms</div><div class="stat-label">DB 변경 → 검색 반영<br>p95 (30회 반복)</div></div></div>
-    <div class="role-head">
-      <div class="role-num">담당 기능 02</div>
-      <h3 class="subhead">AI 맞춤 여행 코스 생성</h3>
-      <p class="role-desc">지역·기간·동행·선호를 입력하면 AI가 관광지·음식점·숙소 후보를 검색해 일자별 여행 코스를 만들고, 실제 검색된 장소에 근거한 코스만 보여주는 기능입니다.</p>
-      <div class="svc-flow"><span>여행 조건 입력</span><b class="arr">→</b><span>장소 후보 검색</span><b class="arr">→</b><span>AI 코스 생성</span><b class="arr">→</b><span>일정·근거 검증</span><b class="arr">→</b><span>일자별 코스 확인</span></div>
-    </div>
-    <div class="contrib-label">핵심 기여<span>LangGraph 기반 여행 코스 생성·근거 검증</span></div>
-    <p class="body-text">요청 분석부터 검증까지 이어지는 파이프라인을 Spring Boot - FastAPI로 연동하고, 관광지·음식점·숙소 Agent가 모두 공통 Elasticsearch 검색 API를 사용하도록 통합했습니다.</p>
-    <div class="flow-steps"><div class="flow-step"><div class="flow-num">01</div><div class="flow-text"><strong>요청 분석</strong> - 사용자의 지역·기간·동행·선호 조건 파악</div></div><div class="flow-step"><div class="flow-num">02</div><div class="flow-text"><strong>장소 검색</strong> - 공통 Elasticsearch 검색 API로 관광지·음식점·숙소 후보 조회</div></div><div class="flow-step"><div class="flow-num">03</div><div class="flow-text"><strong>일정 생성</strong> - 검색 결과를 바탕으로 일자별 코스 구성</div></div><div class="flow-step"><div class="flow-num">04</div><div class="flow-text"><strong>검증</strong> - 일정 중복·시간 충돌·누락을 검증하고 기준 미달 시 재생성</div></div><div class="flow-step"><div class="flow-num">05</div><div class="flow-text"><strong>근거 차단</strong> - 검색 결과 조건에 근거하지 않은 주장은 차단하고, 근거 부족 시 fallback 응답 반환</div></div></div>
-    <div class="stat-row" style="grid-template-columns:repeat(auto-fit,minmax(170px,340px))"><div class="stat-box"><div class="stat-num">37 → 0건</div><div class="stat-label">일정에 없는 장소 ID를 인용한 Claim<br>근거 검증 단계에서 차단 · 고유 요청 310건</div></div></div>
     <div class="role-head">
       <div class="role-num">담당 기능 03</div>
       <h3 class="subhead">서비스 모니터링</h3>
