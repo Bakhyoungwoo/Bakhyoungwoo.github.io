@@ -84,7 +84,7 @@
     <p class="body-text">초기에는 관광지·음식점·숙소 테이블을 각각 LIKE 조건으로 조회해, 키워드와 필터가 겹치는 복합 조건 검색에서 인덱스를 활용하지 못하고 응답 지연이 발생했습니다. 검색 기능을 Elasticsearch로 분리하고 관광지·음식점·숙소 데이터를 통합 색인한 뒤, 전문 검색과 필터링을 활용한 복합 조건 검색 API를 구현했습니다.</p>
     <div class="stat-row"><div class="stat-box"><div class="stat-num">271.6 → 29.2ms</div><div class="stat-label">검색 API p95 (-89.3%)<br>기존 RDB 검색 API 대비 · k6 · VU 20 · 5분</div></div><div class="stat-box"><div class="stat-num">76.4 → 135.5 req/s</div><div class="stat-label">처리량 (+77.3%)<br>기존 RDB 검색 API 대비 · k6 · VU 20 · 5분</div></div></div>
     <div class="contrib-label sub">핵심 기여<span>Kafka·Debezium 기반 CDC 파이프라인</span></div>
-    <p class="body-text">Debezium이 PostgreSQL 변경 사항을 Kafka 이벤트로 전달하면 Consumer가 Elasticsearch 인덱스에 자동 반영하도록 구성하고, 지수 backoff 재시도와 DLT 기반 재색인을 적용했습니다. CDC 파이프라인을 통해 애플리케이션이 DB와 검색 인덱스에 이중으로 쓰지 않아도 DB 변경이 약 1초 안에 검색 결과에 반영되고, Elasticsearch 장애가 복구된 뒤에도 최신 데이터가 자동으로 반영되는 효과가 있습니다.</p>
+    <p class="body-text">Debezium이 PostgreSQL 변경 사항을 Kafka 이벤트로 전달하면 Consumer가 Elasticsearch 인덱스에 자동 반영하도록 구성하고, 지수 backoff 재시도와 DLT 기반 재색인을 적용했습니다. CDC 파이프라인을 통해 애플리케이션이 DB와 검색 인덱스에 이중으로 쓰지 않아도 DB 변경이 검색 결과에 자동으로 반영되고, Elasticsearch 장애가 복구된 뒤에도 최신 데이터가 다시 반영되는 효과가 있습니다.</p>
     <figure class="figure">
       <a href="assets/projects/gangwon-cdc.webp" target="_blank" rel="noopener"><img src="assets/projects/gangwon-cdc.webp" alt="PostgreSQL WAL → Debezium → Kafka Topic → Spring Consumer → Elasticsearch"></a>
       <figcaption class="figure-caption">PostgreSQL WAL → Debezium → Kafka Topic → Spring Consumer → Elasticsearch</figcaption>
