@@ -117,7 +117,7 @@
     <h2 class="d-section-title">트러블 슈팅</h2>
     <article class="trouble-card">
     <div class="trouble-num">Trouble 01</div>
-    <h3 class="subhead">RDB 기반 검색 병목과 Elasticsearch 인덱스 정합성 문제</h3>
+    <h3 class="subhead">RDB 기반 검색 지연과 Elasticsearch 인덱스 정합성 문제</h3>
     <div class="ts-block"><div class="ts-tag">문제</div><p class="body-text">AI 여행 코스 생성 과정에서 관광지·음식점·숙소 후보를 PostgreSQL에서 반복 조회하면서 복합 조건 검색 부하가 증가했습니다. 이로 인해 장소 검색 응답이 지연되고, AI 여행 코스 생성 시간까지 길어졌습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">진단</div><p class="body-text">지역·테마·반려동물 동반 여부·휠체어 접근성·편의시설·영업시간 등 다양한 조건이 조합되면서 문자열 검색과 다중 필터링이 RDB에 집중되었습니다. 또한 Elasticsearch 도입 이후 PostgreSQL의 변경 사항이 검색 인덱스에 자동 반영되지 않아 데이터 정합성 문제도 발생했습니다.</p></div>
     <div class="ts-block"><div class="ts-tag">해결</div><div>
