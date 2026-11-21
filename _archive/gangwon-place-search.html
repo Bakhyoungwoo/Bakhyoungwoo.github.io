@@ -1,0 +1,13 @@
+<!--
+  gangwon.html 담당 기능 01에서 뺀 "장소 검색" 부분 (2026-11-21 보관)
+  - 원래 제목: 장소 검색 및 CDC 파이프라인
+  - 원래 설명: 관광지·음식점·숙소를 조건에 맞게 빠르게 검색하고, 장소 데이터가 바뀌면 CDC 파이프라인을 통해 검색 결과에도 자동으로 반영하는 기능입니다.
+  다시 넣을 때: ① 검색 흐름 줄은 CDC 흐름 줄 위에, ② 핵심 기여 블록은 담당 기능 01 머리(role-head) 바로 아래에 붙이고
+  CDC 핵심 기여 라벨을 class="contrib-label sub" 로 되돌리기
+-->
+<!-- ① 검색 흐름 줄 -->
+      <div class="svc-flow"><em class="k">검색</em><span>검색 조건 요청</span><b class="arr">→</b><span>Elasticsearch 복합 조건 검색</span><b class="arr">→</b><span>관광지·음식점·숙소 후보 반환</span></div>
+<!-- ② 핵심 기여: Elasticsearch 기반 장소 검색 API 분리 -->
+    <div class="contrib-label">핵심 기여<span>Elasticsearch 기반 장소 검색 API 분리</span></div>
+    <p class="body-text">초기에는 관광지·음식점·숙소 테이블을 각각 LIKE 조건으로 조회해, 키워드와 필터가 겹치는 복합 조건 검색에서 인덱스를 활용하지 못하고 응답 지연이 발생했습니다. 검색 기능을 Elasticsearch로 분리하고 관광지·음식점·숙소 데이터를 통합 색인한 뒤, 전문 검색과 필터링을 활용한 복합 조건 검색 API를 구현했습니다.</p>
+    <div class="stat-row"><div class="stat-box"><div class="stat-num">271.6 → 29.2ms</div><div class="stat-label">검색 API p95 (-89.3%)<br>기존 RDB 검색 API 대비 · k6 · VU 20 · 5분</div></div><div class="stat-box"><div class="stat-num">76.4 → 135.5 req/s</div><div class="stat-label">처리량 (+77.3%)<br>기존 RDB 검색 API 대비 · k6 · VU 20 · 5분</div></div></div>
