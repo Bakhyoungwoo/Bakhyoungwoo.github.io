@@ -323,6 +323,7 @@ html.dark .figure img { opacity: .92; }
 .svc-flow span { font-size: .78rem; font-weight: 500; padding: 5px 10px; background: var(--white); color: var(--gray-dark); border: 1px solid var(--gray-line); border-radius: 2px; white-space: nowrap; }
 .svc-flow .arr { font-weight: 400; color: var(--accent); font-size: .8rem; }
 .contrib-label { font-size: .72rem; font-weight: 600; letter-spacing: .06em; color: var(--gray-mid); padding-top: 14px; border-top: 1px solid var(--gray-line); margin-bottom: 10px; }
+.contrib-label.sub { margin-top: 40px; }
 .contrib-label span { margin-left: 10px; color: var(--black); letter-spacing: 0; }
 
 @media (max-width: 768px) {
